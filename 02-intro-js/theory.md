@@ -26,3 +26,6 @@ Ej:
 ### "Copias" y alteraciones
 
 Esto lo puedes hacer con le método .map( callback ). Donde este método recibe un callback, es decir, una función dentro del método map en el cual le indicas que cómo quieres que sea el nuevo array. No son copias literales, son copias a las cuales les haces una modificación de sus elementos a través de este callback
+
+## Function
+
