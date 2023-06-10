@@ -2,10 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- React Scripts -->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>React App</title>
 </head>
 <body>
-    
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // Para que no de errores, ya que el navedador pensará que estamos usando js y nos da el error, para ello debemos poner en la etiqueta script el type="text/babel"
+
+        const divRoot = document.querySelector('#root');
+        // const h1Tag = <h1>Hola Mundo</h1>;
+        
+        // Para introducir variables dentro de elementos, en js con el ES6, usabas los `` con ${}, aquí solo hay que poner { }
+        const hero = 'Goku';
+        const h1Tag = <h1>Hola Mundo, soy {hero}</h1>;
+
+        ReactDOM.render( h1Tag, divRoot);
+
+    </script>
 </body>
 </html>
