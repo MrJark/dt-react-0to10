@@ -57,3 +57,6 @@ Estas promesas se dan a través de callback, funciones como argumentos. Los argu
 MDN: <https://developer.mozilla.org/es/docs/Web/API/Fetch_API>
 Giphy API: <https://developers.giphy.com>
 
+## Operador ternario
+
+
