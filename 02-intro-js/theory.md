@@ -36,3 +36,24 @@ Esto lo puedes hacer con le método .map( callback ). Donde este método recibe 
 ## Desestructuración de objetos y arreglos
 
 MDN: <https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment>
+
+## Exportaciones
+
+Para las exportaciones por defecto, el elemento a exportar no va entre {}, pero si no es por defecto, sí.
+Y si del mismo file, tienes uno por default y otro 'normal', el default no llevará los {} mientras que el otro sí
+Ej:
+  **import heroes {owner} from './src/data/heroes'**
+
+## Promesas
+
+Estas **por default son asíncronas**, es decir, primero se ejecuta todo el código síncrono y después se ejecutan las promesas.
+(Un código síncrono es aquel que se ejecuta con forme se va leyendo)
+MDN: <https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise>
+
+Estas promesas se dan a través de callback, funciones como argumentos. Los argumentos que tiene son el **resolve**, cuando se da de forma exitosa la promesa, y el **reject** que es cunado no se ha podido cumplir
+
+## Fetch API
+
+MDN: <https://developer.mozilla.org/es/docs/Web/API/Fetch_API>
+Giphy API: <https://developers.giphy.com>
+
