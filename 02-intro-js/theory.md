@@ -33,6 +33,6 @@ Esto lo puedes hacer con le método .map( callback ). Donde este método recibe 
 
 ## Functions
 
-## Desestructuración de objetos
+## Desestructuración de objetos y arreglos
 
 MDN: <https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment>
