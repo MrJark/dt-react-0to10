@@ -1,8 +1,8 @@
 import React from 'react'; // importación de React
 import  ReactDOM  from 'react-dom/client'; // Herramienta para renderizar
 import  App  from './FirstApp';
-// import { App } from './hellowordApp';
-App
+// import { App } from './HelloWordApp';
+
 // estas dos imports son las que necesitas para hacer el render de la app
 
 // Creación de la función más básica. Componente (normalmente y por buenas prácticas debe ir en otros archivos)
