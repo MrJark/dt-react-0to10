@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import './style.css';
 
 // const newMessage = 'Patatas con Jamón'; // no es buena práctica colocar const o funciones que no cambien dentro de la const que estás construyendo. Si no van a cambiar, se tienen que colocar fuera del scope de la función aunque no va a afectar a nada ya que se renderizaría cada vez que llamas a la función y sería espacio en memoria innecesario
 // Se pueden enviar expresiones permitidas en JS como strings, números, arrays, boolean (aunque no se mostrarán en pantalla) pero no se pueden enviar objetos
