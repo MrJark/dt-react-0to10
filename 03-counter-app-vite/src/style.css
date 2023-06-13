@@ -11,3 +11,8 @@ body {
     font-size: 1rem;
     padding: 45px;
 }
+
+button {
+    margin-top: 20px;
+    font-size: x-large;
+}
