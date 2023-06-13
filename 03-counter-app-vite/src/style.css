@@ -7,7 +7,7 @@ html,
 body {
     background: #2B2F2F;
     color: #F9F9F9;
-    font-family: 'Ubuntu', 'sans-serif';
+    font-family: 'Ubuntu', 'Helvetica', 'sans-serif';
     font-size: 1rem;
     padding: 45px;
 }

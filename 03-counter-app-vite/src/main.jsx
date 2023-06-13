@@ -1,7 +1,9 @@
 import React from 'react'; // importación de React
 import  ReactDOM  from 'react-dom/client'; // Herramienta para renderizar
 import  App  from './FirstApp';
+import CounterApp from './CounterApp';
 // import { App } from './HelloWordApp';
+
 
 // estas dos imports son las que necesitas para hacer el render de la app
 
@@ -12,8 +14,15 @@ import  App  from './FirstApp';
 // };
 
 // Render de la app en el DOM
+// ReactDOM.createRoot(document.getElementById('root')).render(
+//     <React.StrictMode>
+//         <App title='Hola, soy Goku!'/> {/* title y subTitle son las props que se pueden predeterminar aquí y se añaden así:  <App title="Hola, soy Goku" subTitle={123}/>*/}
+//     </React.StrictMode>
+// );
+
+// Tarea
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <App title='Hola, soy Goku!'/> {/* title y subTitle son las props que se pueden predeterminar aquí y se añaden así:  <App title="Hola, soy Goku" subTitle={123}/>*/}
+        <CounterApp value={1}/> 
     </React.StrictMode>
 );
