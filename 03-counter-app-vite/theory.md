@@ -5,7 +5,7 @@ Usaré dependencias de VITE y no de Create React App ya que esta última usa web
 
 Para implementar fragmentos de código de JS en los fragmentos del html en React, tienes que ponerlos entre **{ }**
 
-- **Props** = properties 
-Son las propiedades que se le mandan a las funciones y normalmente se desestructuran
-Las props son funcionalidades que fluyen del componente padre, en este caso, del main.jsx al FirstApp.jsx
-
+- **Props** = properties
+Son las propiedades que se le mandan a los functional component y normalmente se desestructuran. No se mandan en el argumento como **' props '** sino que se usan las **{ }**
+Las props son funcionalidades que fluyen del componente padre, en este caso el main.jsx, al hijo, el FirstApp.jsx
+Las propos son objetos con información
