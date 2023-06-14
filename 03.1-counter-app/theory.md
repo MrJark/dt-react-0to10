@@ -13,7 +13,7 @@ Las props son funcionalidades que fluyen del componente padre, en este caso el m
 Las propos son objetos con información
 
 - **Hooks**
-<https://es.legacy.reactjs.org/docs/hooks-intro.html>
+[Hooks React](https://es.legacy.reactjs.org/docs/hooks-intro.html)
 
 - **Jest**
 [Jest](https://jestjs.io/docs/getting-started)
