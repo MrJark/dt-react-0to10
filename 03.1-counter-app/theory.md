@@ -30,3 +30,6 @@ Además se debe crear en la carpeta test, en mi caso, un carpeta que se igual qu
 
 - Instalación de las **dependencias de Bable** -> yarn add --dev babel-jest @babel/core @babel/preset-env
 - Intalación de las **dependencias de types** -> yarn add -D @types/jest y en el script de del .json tienes que poner **"test": "jest --watchAll"** para que te muestre todo a la hora de hacer el test
+
+Cuando se ejecuta el **yarn test** puede dar el siguiente error: **You appear to be using a native ECMAScript module configuration file, which is only supported when running Babel asynchronously**, si esto te pasa, en la documentación de [Jest](https://jestjs.io/docs/getting-started) te dice que el archivo que debes crear para babel es **babel.config.js** tienes que cambiar el **.js** por **.cjs** y ya debería funcionar todo. Sino, aquí puedes oibtener más info al respecto [NodeJs](https://nodejs.org/docs/latest/api/modules.html#enabling)
+
