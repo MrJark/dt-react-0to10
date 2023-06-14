@@ -24,3 +24,9 @@ Las pruebas son se hacen antes de hacer el launch de la app y constan de 3 parte
   1. Inicialización
   2. Estímulo
   3. Observación del comportamiento... esperados
+
+Para hacer las pruebas, el elemento o función a la cual le vayas a hacer la prueba, debe estar **export**
+Además se debe crear en la carpeta test, en mi caso, un carpeta que se igual que la que contiene los files a los cuales le vas a hacer las pruebas y tendrá el mismo nombre pero la extensión debe ser: **(nombre archivo).test.js** o **(nombre archivo).test.jsx** dependiendo de si va a ser componente react o solo js
+
+- Instalación de las **dependencias de Bable** -> yarn add --dev babel-jest @babel/core @babel/preset-env
+- Intalación de las **dependencias de types** -> yarn add -D @types/jest y en el script de del .json tienes que poner **"test": "jest --watchAll"** para que te muestre todo a la hora de hacer el test
