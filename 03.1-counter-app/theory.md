@@ -17,3 +17,10 @@ Las propos son objetos con información
 
 - **Jest**
 [Jest](https://jestjs.io/docs/getting-started)
+
+## Pruebas
+
+Las pruebas son se hacen antes de hacer el launch de la app y constan de 3 partes:
+  1. Inicialización
+  2. Estímulo
+  3. Observación del comportamiento... esperados
