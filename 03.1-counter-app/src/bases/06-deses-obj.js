@@ -1,5 +1,5 @@
 // Tarea:
-const usContext = ({ clave, nombre, edad, rango = 'Capitán' }) => {
+export const usContext = ({ clave, nombre, edad, rango = 'Capitán' }) => {
 
 
     return {
