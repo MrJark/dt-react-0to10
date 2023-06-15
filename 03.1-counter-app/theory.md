@@ -21,6 +21,7 @@ Las propos son objetos con información
 ## Pruebas
 
 Las pruebas son se hacen antes de hacer el launch de la app y constan de 3 partes:
+
   1. Inicialización
   2. Estímulo
   3. Observación del comportamiento... esperados
@@ -29,7 +30,8 @@ Para hacer las pruebas, el elemento o función a la cual le vayas a hacer la pru
 Además se debe crear en la carpeta test, en mi caso, un carpeta que se igual que la que contiene los files a los cuales le vas a hacer las pruebas y tendrá el mismo nombre pero la extensión debe ser: **(nombre archivo).test.js** o **(nombre archivo).test.jsx** dependiendo de si va a ser componente react o solo js
 
 - Instalación de las **dependencias de Bable** -> yarn add --dev babel-jest @babel/core @babel/preset-env
-- Intalación de las **dependencias de types** -> yarn add -D @types/jest y en el script de del .json tienes que poner **"test": "jest --watchAll"** para que te muestre todo a la hora de hacer el test
+- Intalación de las **dependencias de types** -> yarn add -D @types/jest y en el script de del .json tienes que poner **"test": "jest --watchAll"** para que te muestre todo a la hora de hacer el test.
+
+He hecho un cambio en el .json con respecto al **"test": "jest --watchAll"** ya que este me hacía que se me autorecargara la consola siempre, por ende, he tenido que poner solo el **--watch** sin el All. Así quedaría **"test": "jest --watch"** y esto me evita que se autorecargue
 
 Cuando se ejecuta el **yarn test** puede dar el siguiente error: **You appear to be using a native ECMAScript module configuration file, which is only supported when running Babel asynchronously**, si esto te pasa, en la documentación de [Jest](https://jestjs.io/docs/getting-started) te dice que el archivo que debes crear para babel es **babel.config.js** tienes que cambiar el **.js** por **.cjs** y ya debería funcionar todo. Sino, aquí puedes oibtener más info al respecto [NodeJs](https://nodejs.org/docs/latest/api/modules.html#enabling)
-
