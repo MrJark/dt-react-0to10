@@ -36,7 +36,14 @@ He hecho un cambio en el .json con respecto al **"test": "jest --watchAll"** ya 
 
 Cuando se ejecuta el **yarn test** puede dar el siguiente error: **You appear to be using a native ECMAScript module configuration file, which is only supported when running Babel asynchronously**, si esto te pasa, en la documentación de [Jest](https://jestjs.io/docs/getting-started) te dice que el archivo que debes crear para babel es **babel.config.js** tienes que cambiar el **.js** por **.cjs** y ya debería funcionar todo. Sino, aquí puedes oibtener más info al respecto [NodeJs](https://nodejs.org/docs/latest/api/modules.html#enabling)
 
-- **Testarchivos async**
+**Testarchivos async**
 En la consola, al hacer el test de los archivos de async y await, me salen unos errores en la consola por los módulos de node. Par asolucionarlos he tenido que crear, en el directorio padre, los archivos **jest.config.cjs**, debería ser tb js pero por el tipo de actualizaciones que tengo, necesito el .cjs, y son modulos de node, y **jest.setup.js**
 Además he tenido que intalar un paquete en las dependencias de desarrollo **yarn add -D whatwg-fetch**
 Este problema no existiría si estuvieras trabajando con **cra** porque ya vienen configurados pero al estar en vite, es necesario
+
+### TESTING LIBRARY
+
+Jest es muy bueno para hacer pruebas pero no tanto para hacerlas con React y ahí es donde entra esta librería: [(React-)Testing Library](https://testing-library.com)
+
+Para instalarlo, necesito **yarn add --dev @testing-library/react**
+
