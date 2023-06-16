@@ -19,7 +19,7 @@ const App = ( { title, subTitle, name } ) => {
     return (
 
         <>
-            <h1>Chema</h1>
+            <h2>Chema</h2>
             <p>Soy un P</p>
             <h2> { 1+1 } </h2>
             <h3>{newMessage.name}</h3>
@@ -40,7 +40,7 @@ App.propTypes = {
 App.defaultProps = {
     name: 'Chema Ferrandez',
     subTitle: 'No hay subtitulo',
-    // title: 'No hay título',
+    // title: 'No hay título', // si lo quito, tengo que tenerlo en el main como title
 }
 
 
