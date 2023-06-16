@@ -23,6 +23,7 @@ import CounterApp from './CounterApp';
 // Tarea
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <CounterApp value={1}/> 
+        {/* <CounterApp value={1}/>  */}
+        <App/>
     </React.StrictMode>
 );
