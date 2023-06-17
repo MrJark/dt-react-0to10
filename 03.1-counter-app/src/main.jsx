@@ -23,7 +23,10 @@ import CounterApp from './CounterApp';
 // Tarea
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        {/* <CounterApp value={1}/>  */}
-        <App title="Hola, soy Vegeta"/>
+        <CounterApp value={1}/> 
+        {/* <App 
+            title="Hola, soy Vegeta"
+            subTitle= "Soy un subitulo"
+        /> */}
     </React.StrictMode>
 );
