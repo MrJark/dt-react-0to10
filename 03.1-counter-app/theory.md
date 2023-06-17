@@ -46,4 +46,3 @@ Este problema no existiría si estuvieras trabajando con **cra** porque ya viene
 Jest es muy bueno para hacer pruebas pero no tanto para hacerlas con React y ahí es donde entra esta librería: [(React-)Testing Library](https://testing-library.com)
 
 Para instalarlo, necesito **yarn add --dev @testing-library/react**
-
