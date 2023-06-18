@@ -18,7 +18,9 @@ exports[`pruebas a CounterApp Tarea 1: hacer match con el snapshot (cnoseguido) 
   <button>
      -1 
   </button>
-  <button>
+  <button
+    aria-label="btn-reset"
+  >
      Reset 
   </button>
 </div>

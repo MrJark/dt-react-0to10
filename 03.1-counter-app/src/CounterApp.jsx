@@ -2,7 +2,7 @@
 // Conseguida!!
 
 import { useState } from "react"; // los Hooks en React empiezan con la palabra ' use '
-// import './style.css';
+// import './style.css'; // para hacer las pruebas ha de ser desactivado
 import PropTypes from 'prop-types';
 
 
@@ -40,7 +40,7 @@ const CounterApp = ( { value } ) => {
             </button>
             {/* Tarea: dar funcionalidad a los botones -1 y Reset. Conseguida!🎉 */}
             <button onClick={ substractApp }> -1 </button>
-            <button onClick={resetApp}> Reset </button>
+            <button aria-label="btn-reset" onClick={resetApp}> Reset </button>
         </>
     )
 };
