@@ -18,7 +18,7 @@ export const GifApp = () => {
             ...categories,
             newCategory,
         ]);
-        // otras formas de hacer la tarea
+        // otras formas de hacer la tarea⬇️
         // setCategories( cat => [...cat, 'Valorant']);
     };
 
