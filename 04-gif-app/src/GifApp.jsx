@@ -1,6 +1,7 @@
 // import React from 'react'; // no me hace falta importarlo porque ya está por defecto (solo ytan solo este)
 import { useState } from 'react';
 import './style.css';
+import { AddCategory } from './components/AddCategory';
 
 export const GifApp = () => {
 
@@ -27,6 +28,8 @@ export const GifApp = () => {
             {/* Titulo */}
             <h1>GifApp</h1>
             {/* Input */}
+            <AddCategory/>
+            {/* <input type="text" placeholder='Add category' /> */}
             <button onClick={onAddCategory}>Add</button>
             <ul>
                 { categories.map( category => { // .map devuelve un nuevo arreglo haciendo la modifi.que quieras. En este caso, que devuelve las categories
