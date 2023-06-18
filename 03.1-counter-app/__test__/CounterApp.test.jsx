@@ -1,18 +1,29 @@
 import { render, screen } from "@testing-library/react";
-import App from "../src/FirstApp";
+// import App from "../src/FirstApp";
+import CounterApp from "../src/CounterApp";
+
 
 describe('pruebas a CounterApp', () => {
 
-    test('Tarea 1: hacer match con el snapshot', () => {
-        const { counter } = render(
-            <App
-                value = {1}
+    const initialValue = 1;
+
+    test('Tarea 1: hacer match con el snapshot (cnoseguido)', () => {
+        const { container } = render(
+            <CounterApp
+                value={initialValue}
             />
         );
-        expect( counter ).toMatchSnapshot();
+        expect( container ).toMatchSnapshot();
     });
 
-    test('Tarea 2: debe mostrar el valor inicial de 1', () => {
+    test('Tarea 2: debe mostrar el valor inicial de 1(no conseguido)', () => {
+
+        render(
+            <CounterApp
+                value={initialValue}
+            />
+        );
+        expect( screen.getByText(initialValue)).toBeTruthy();
 
     });
 

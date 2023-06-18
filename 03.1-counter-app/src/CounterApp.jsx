@@ -2,7 +2,7 @@
 // Conseguida!!
 
 import { useState } from "react"; // los Hooks en React empiezan con la palabra ' use '
-import './style.css';
+// import './style.css';
 import PropTypes from 'prop-types';
 
 
