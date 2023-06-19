@@ -5,7 +5,7 @@ import { AddCategory } from './components/AddCategory';
 
 export const GifApp = () => {
 
-    const newCategory = 'Pokemon'; // parte de la tarea
+    // const newCategory = 'Pokemon'; // parte de la tarea
     // Hook: ⬇️ -> estos no pueden ir entre condicionales
     const [categories, setCategories] = useState([ // useStateSnippet - espacio en momoria para almacenar las categorías
 
@@ -13,12 +13,11 @@ export const GifApp = () => {
         'One Piece',
 
     ]);
-    const onAddCategory = (title) => {
+    const onAddCategory = ( newCategory ) => {
+        // console.log(newCategory);
+
         // Tarea: añadir una nueva categoria al useState (conseguido)
-        setCategories([ // mi forma para la tarea es esta
-            ...categories,
-            newCategory,
-        ]);
+        setCategories([ ...categories, newCategory ]); // mi forma para la tarea es esta
         // otras formas de hacer la tarea⬇️
         // setCategories( cat => [...cat, 'Valorant']);
     };
@@ -29,7 +28,8 @@ export const GifApp = () => {
             <h1>GifApp</h1>
             {/* Input */}
             <AddCategory
-                setCategories = { setCategories }
+                // setCategories = { setCategories } // No me sirve ya 
+                onNewCategory = { (value) => onAddCategory(value) }
             />
             {/* <input type="text" placeholder='Add category' /> */}
             {/* <button onClick={onAddCategory}>Add</button> */}
