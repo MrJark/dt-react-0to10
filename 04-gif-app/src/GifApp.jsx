@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import './style.css';
 import { AddCategory } from './components/AddCategory';
+import { GifGrid } from './components/GifGrid';
 
 export const GifApp = () => {
 
@@ -15,6 +16,8 @@ export const GifApp = () => {
     ]);
     const onAddCategory = ( newCategory ) => {
         // console.log(newCategory);
+        // const categoryExist = categories.some(exist => exist.toLowerCase() === newCategory); // he intentado hacer el lowerCase para cuando sean iguales al ponerlas en minus pero no lo he conseguido
+        if(categories.includes(newCategory) ) return; // esta linea impide que se creen nuevas categorias iguales a las existentes, indistintamente de los espacios que tengan delante y detrás gracias al trim()
 
         // Tarea: añadir una nueva categoria al useState (conseguido)
         setCategories([ ...categories, newCategory ]); // mi forma para la tarea es esta
@@ -34,9 +37,18 @@ export const GifApp = () => {
             {/* <input type="text" placeholder='Add category' /> */}
             {/* <button onClick={onAddCategory}>Add</button> */}
             <ul>
-                { categories.map( category => { // .map devuelve un nuevo arreglo haciendo la modifi.que quieras. En este caso, que devuelve las categories
-                    return <li key={category}>{category}</li>
-                })}
+                {/* { categories.map( category =>  // .map devuelve un nuevo arreglo haciendo la modifi.que quieras. En este caso, que devuelve las categories
+                    ( // retorna un objeto para poder seguir añadiendo elementos al div, en este caso
+                        <div key={category}>
+                            <li>{category}</li>
+                        </div>
+                    ) // puedes quitar el return porque no se inserta código js arriba, sino si sería necesrio como es en el caso de GifGrid.jsx
+                // )} //// esta es una forma larga de hacer la inserción de categorias pero si creas un elemento y lo llamas, el código es más limpio y sencillo */} 
+                { categories.map( (category) =>  
+                    ( 
+                        <GifGrid key={category} category={category}/>
+                    ))
+                }
                 
             </ul>
             {/* Lista de Gifs */}

@@ -6,7 +6,7 @@ import { useState } from 'react';
 export const AddCategory = ({ onNewCategory }) => {
 
     
-    const [inputValue, setInputValue] = useState();
+    const [inputValue, setInputValue] = useState(''); // para que no salte el warning, debe tener el useState ' ' ls comillas
 
     const onChangeConst = ({ target }) => {
         setInputValue(target.value)
@@ -15,6 +15,12 @@ export const AddCategory = ({ onNewCategory }) => {
     const onSubmit = (event) => {
         event.preventDefault(); // para que no refresh el navegador
         // console.log(inputValue);
+
+        // Para el lowerCase pero no he podido conseguirlo
+        // const newCatToLowerCase = inputValue.toLowerCase();
+        // const catExist = categories.some(cat => cat.toLowerCase() === newCatToLowerCase);
+        // if( inputValue.trim().length <= 1 || catExist) return;
+
         if( inputValue.trim().length <= 1 ) return; // para decir que no añada nada que tenga menos de un caracter, quitando espacios
 
         // setCategories( categories => [inputValue, ...categories] );// Tarea
