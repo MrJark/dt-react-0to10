@@ -10,7 +10,7 @@ export const GifApp = () => {
     const [categories, setCategories] = useState([ // useStateSnippet - espacio en momoria para almacenar las categorías
 
         'Dragon Ball',
-        'One Piece'
+        'One Piece',
 
     ]);
     const onAddCategory = (title) => {
@@ -28,9 +28,11 @@ export const GifApp = () => {
             {/* Titulo */}
             <h1>GifApp</h1>
             {/* Input */}
-            <AddCategory/>
+            <AddCategory
+                setCategories = { setCategories }
+            />
             {/* <input type="text" placeholder='Add category' /> */}
-            <button onClick={onAddCategory}>Add</button>
+            {/* <button onClick={onAddCategory}>Add</button> */}
             <ul>
                 { categories.map( category => { // .map devuelve un nuevo arreglo haciendo la modifi.que quieras. En este caso, que devuelve las categories
                     return <li key={category}>{category}</li>
