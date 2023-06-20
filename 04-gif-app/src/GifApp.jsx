@@ -11,7 +11,7 @@ export const GifApp = () => {
     const [categories, setCategories] = useState([ // useStateSnippet - espacio en momoria para almacenar las categorías
 
         'Dragon Ball',
-        'One Piece',
+        // 'One Piece',
 
     ]);
     const onAddCategory = ( newCategory ) => {
