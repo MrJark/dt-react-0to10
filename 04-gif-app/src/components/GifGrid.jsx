@@ -1,4 +1,5 @@
 // import React from 'react';
+import { useEffect, useState } from 'react';
 import { getGifs } from './helppers/getGifs'
 
 export const GifGrid = ({ category }) => {
@@ -22,8 +23,14 @@ export const GifGrid = ({ category }) => {
   //   return gifs;
   // };
 
+
+
+  useEffect( () => { // sincroniza componentes con sistemas externos y tiene que recibir 2 parámetros
+    getGifs(category)
+  }, [  ])
+  // esta es la buena practica para poner funciones dentro de los functional component. Evita que se renderice todo de nuevo cada vez gracias a los ' [  ] ' que está vacio
   
-  getGifs(category); // NO se DEBE colocar la ejecución de una función directamente dentro de un functional component ya que cada vez que la función se llame, se ejecutará una y otra vez
+  // getGifs(category); // NO se DEBE colocar la ejecución de una función directamente dentro de un functional component ya que cada vez que la función se llame, se ejecutará una y otra vez
   
 
   return (
