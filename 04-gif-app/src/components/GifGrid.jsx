@@ -1,6 +1,9 @@
 // import React from 'react';
 import { useEffect, useState } from 'react';
-import { getGifs } from './helppers/getGifs'
+import { getGifs } from './helppers/getGifs';
+import { GifItem } from './GifItem';
+
+
 
 export const GifGrid = ({ category }) => {
 
@@ -41,16 +44,22 @@ export const GifGrid = ({ category }) => {
   return (
     <>
         <h3>{category}</h3>
-        <ul>
-
+        <div className="card-grid">
           {
             // Forma "complicada"
             // images.map( image => (
             //   <li key={ image.id }>{ image.title} </li>
             // ))
             // Forma simple al desestructurar
-            images.map( ({id, title}) => (
-              <li key={ id }>{ title}</li>
+            images.map( ( image ) => (
+              
+              // las properties que ponga aquí ⬇️ son aquellas que mandas al GifItem ya que ese es el hijo y este, donde estás, GifGrid, es el padre. El hijo necesita el titulo y el url por eso se las mandas y si queires tb puedes tener el id pero no te hace falta, ese se queda en este component. Pero otra manera mas sencilla es con el spread ' ... ' y expandes todas las properties que  tenga el elemento, en este caso image ( porque si son 100 properties, de una en una...)
+              <GifItem 
+                key={image.id}
+                // title= {image.title}
+                // url= {image.url} 
+                {  ...image }
+              />
             ))
           }
 
@@ -58,7 +67,7 @@ export const GifGrid = ({ category }) => {
            key={images.id}
            title={images.title}
           ></li>  // Tarea: crear el arreglo de images que tenga(no conseguido. Esta era mi solución) */}
-        </ul>     
+        </div>     
 
     </>
   )
