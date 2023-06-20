@@ -23,10 +23,15 @@ export const GifGrid = ({ category }) => {
   //   return gifs;
   // };
 
+  const [images, setImages] = useState([]); // vacio para qeu no muestre nada antes de las imagenes
 
+  const getImages = async () => {
+    const newImage = await getGifs( category );
+    setImages(newImage);
+  }
 
   useEffect( () => { // sincroniza componentes con sistemas externos y tiene que recibir 2 parámetros
-    getGifs(category)
+    getImages();
   }, [  ])
   // esta es la buena practica para poner funciones dentro de los functional component. Evita que se renderice todo de nuevo cada vez gracias a los ' [  ] ' que está vacio
   
@@ -36,7 +41,24 @@ export const GifGrid = ({ category }) => {
   return (
     <>
         <h3>{category}</h3>
-        <p>Hello</p>        
+        <ul>
+
+          {
+            // Forma "complicada"
+            // images.map( image => (
+            //   <li key={ image.id }>{ image.title} </li>
+            // ))
+            // Forma simple al desestructurar
+            images.map( ({id, title}) => (
+              <li key={ id }>{ title}</li>
+            ))
+          }
+
+          {/* <li
+           key={images.id}
+           title={images.title}
+          ></li>  // Tarea: crear el arreglo de images que tenga(no conseguido. Esta era mi solución) */}
+        </ul>     
 
     </>
   )

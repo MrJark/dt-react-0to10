@@ -4,7 +4,7 @@ import { GifApp } from './GifApp';
 import './style.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <GifApp />
-  </React.StrictMode>,
+  // </React.StrictMode>,
 )
