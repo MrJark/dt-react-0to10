@@ -1,8 +1,8 @@
 // import React from 'react'; // no me hace falta importarlo porque ya está por defecto (solo ytan solo este)
 import { useState } from 'react';
 import './style.css';
-import { AddCategory } from './components/AddCategory';
-import { GifGrid } from './components/GifGrid';
+import { AddCategory, GifGrid } from './components';
+
 
 export const GifApp = () => {
 
