@@ -1,7 +1,8 @@
 // import React from 'react';
 import { useEffect, useState } from 'react';
-import { getGifs } from './helppers/getGifs';
+// import { getGifs } from './helppers/getGifs';
 import { GifItem } from './GifItem';
+import { useFetchGifs } from '../hooks/useFetchGifs';
 
 
 
@@ -26,16 +27,21 @@ export const GifGrid = ({ category }) => {
   //   return gifs;
   // };
 
-  const [images, setImages] = useState([]); // vacio para qeu no muestre nada antes de las imagenes
+  const { images, isLoading } = useFetchGifs( category );
+  // console.log({isLoading});
 
-  const getImages = async () => {
-    const newImage = await getGifs( category );
-    setImages(newImage);
-  }
+  // Corto el código y me lo llevo al useFetchGifs para que todo sea más simple
+  // const [images, setImages] = useState([]); // vacio para qeu no muestre nada antes de las imagenes
 
-  useEffect( () => { // sincroniza componentes con sistemas externos y tiene que recibir 2 parámetros
-    getImages();
-  }, [  ])
+
+  // const getImages = async () => {
+  //   const newImage = await getGifs( category );
+  //   setImages(newImage);
+  // }
+
+  // useEffect( () => { // sincroniza componentes con sistemas externos y tiene que recibir 2 parámetros
+  //   getImages();
+  // }, [  ]);
   // esta es la buena practica para poner funciones dentro de los functional component. Evita que se renderice todo de nuevo cada vez gracias a los ' [  ] ' que está vacio
   
   // getGifs(category); // NO se DEBE colocar la ejecución de una función directamente dentro de un functional component ya que cada vez que la función se llame, se ejecutará una y otra vez

@@ -22,3 +22,7 @@ En React no hay una estructura obligatoria pero si se recomienda trabajar de la 
 El strictMode en  React solo se usa en la parte de desarrollo y sive para detectar bugs tempranos en la parte de desarrollo.
 Y es una de las causas por las cuales se dispara dos veces los elementos del gifApp, una por el .log que he puesto y otra por el strict mode.
 [Docs](https://react.dev/reference/react/StrictMode)
+
+## Hooks
+
+Todos los Hooks en react deben empezar, como buenas prácticas, por ' use ' y un hook no es mas que una función que regresa algo
