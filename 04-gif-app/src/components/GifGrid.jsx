@@ -50,6 +50,12 @@ export const GifGrid = ({ category }) => {
   return (
     <>
         <h3>{category}</h3>
+
+        {
+          // 2 Formas de mostrar un elemento de manera condicional
+          // isLoading ? (<h4>Loading...</h4>) : null
+          isLoading && (<h4>Loading...</h4>) 
+        }
         <div className="card-grid">
           {
             // Forma "complicada"
