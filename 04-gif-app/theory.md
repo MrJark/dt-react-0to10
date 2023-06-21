@@ -26,3 +26,7 @@ Y es una de las causas por las cuales se dispara dos veces los elementos del gif
 ## Hooks
 
 Todos los Hooks en react deben empezar, como buenas prácticas, por ' use ' y un hook no es mas que una función que regresa algo
+
+## Course URL
+
+<https://gif-app-devtalles.netlify.app>
