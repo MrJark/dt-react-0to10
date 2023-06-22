@@ -19,7 +19,7 @@ Tarea:
 */
 
 // 2. hacer obligatorios los titulos u las url
-GifItem.PropTypes = {
+GifItem.propTypes = {
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
 }
