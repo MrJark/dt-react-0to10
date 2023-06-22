@@ -1,8 +1,6 @@
+import PropTypes from 'prop-types'; // 1. Añadir los proptypes
 
-
-export const GifItem = ({ title, url }) => { // lo que necesitas para mostrar un gif es el titulo y el url 
-
-    // console.log({title, url});
+export const GifItem = ({ title, url }) => { 
 
   return (
     <div className="card">
@@ -10,4 +8,18 @@ export const GifItem = ({ title, url }) => { // lo que necesitas para mostrar un
         <p>{title}</p>
     </div>
   )
+}
+
+/*
+Tarea: 
+1. Añadir el PropTypes (no conseguida)
+  a. titulo obligatorio
+  b. rul obligatorio
+2. Evaluar el snapshot
+*/
+
+// 2. hacer obligatorios los titulos u las url
+GifItem.PropTypes = {
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 }

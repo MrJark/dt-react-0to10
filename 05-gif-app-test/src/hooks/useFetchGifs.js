@@ -5,7 +5,7 @@ import { getGifs } from '../components/helppers/getGifs';
 
 export const useFetchGifs = ( category ) => {
   
-    const [ images, setImages ] = useState([]); // vacio para qeu no muestre nada antes de las imagenes
+    const [ images, setImages ] = useState([]); 
     const [ isLoading, setIsLoading ] = useState(true);
 
     const getImages = async () => {
@@ -14,7 +14,7 @@ export const useFetchGifs = ( category ) => {
         setIsLoading(false);
     }
 
-    useEffect( () => { // sincroniza componentes con sistemas externos y tiene que recibir 2 parámetros
+    useEffect( () => { 
         getImages();
     }, [  ]);
 
