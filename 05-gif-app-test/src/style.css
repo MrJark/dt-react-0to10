@@ -1,0 +1,92 @@
+* {
+    font-family: 'Ubuntu', Helvetica, sans-serif;
+    background-color: #2B2F2F;
+    color: #f9f9f9;
+  }
+  
+  body {
+    padding: 30px;
+    
+  }
+  
+  input {
+    background-color: #2B2F2F;
+    border-radius: 12px;
+    border: 1px solid #AB79DD;
+    /* border: 1px solid #0C9A9D; */
+    color: #f9f9f9;
+    font-size: 1.2rem;
+    outline: none;
+    padding: 10px 15px;
+    width: 300px;
+    display: flex;
+    margin: 12px 0px 12px 0px;
+  }
+
+  input:hover {
+    background: #3b4242;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+
+  ul {
+    padding: 0px;
+  }
+  
+  .card-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* width: 400px; */
+  }
+  
+  .card {
+    align-content: center;
+    align-items: center;
+    background-color: #2B2F2F;
+    border-radius: 10px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    height: 0%;  
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    overflow: hidden;
+  }
+
+  .card p {
+    background-color: #2B2F2F;
+    flex: 1;
+    font-size: 1.5rem;
+    margin-top: 5px;
+    padding: 5px 20px 0px 20px;
+    text-align: center;
+  }
+  
+  .card img {
+    width: 100%;
+  }
+/*   
+  button {
+    width: 60px;
+    height: 20px;
+    background: #f9f9f9;
+    border: none;
+    border-radius: 12px;
+    color: #1c1c1c;
+    font-weight: 600;
+  } */
+  
