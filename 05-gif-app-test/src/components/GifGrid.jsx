@@ -34,7 +34,7 @@ export const GifGrid = ({ category }) => {
   )
 };
 
-// proptipes por la category, de la que depende el componente
+// proptypes por la category, de la que depende el componente
 GifGrid.propTypes = {
   category: PropTypes.string.isRequired,
 }
