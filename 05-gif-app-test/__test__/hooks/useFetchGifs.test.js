@@ -32,7 +32,6 @@ describe('pruebas en el hook del useFetchGifs. Son hooks customizados', () => {
         expect( images.length).toBeGreaterThan(0);
         expect( isLoading).toBeFalsy();
 
-
     });
 
 });

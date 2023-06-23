@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './style.css';
+// import './style.css'; // para el test no va
 import { AddCategory, GifGrid } from './components';
 
 
@@ -19,7 +19,6 @@ export const GifApp = () => {
 
     return(
         <>
-            
             <h1>GifApp</h1>
             <AddCategory
                 onNewCategory = { (value) => onAddCategory(value) }
