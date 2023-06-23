@@ -22,4 +22,18 @@ describe('Pruebas en <AddCategory />', () => {
 
     });
 
+    test('debe de llamar onNowCategory si el input tiene un valor', () => {
+
+        const inputValue = 'Dragron Ball';
+
+        render( <AddCategory onNewCategory={ () => {} }/> );
+        const input = screen.getByRole('textbox');
+        const form = screen.getByLabelText('the-form');
+
+        fireEvent.input( input, {target: { value: inputValue } } ); // estableces el valor del input
+        fireEvent.submit( form ); // con los formularios no hace falta poner nada más
+    
+        expect(input.value).toBe(''); // para saber que después del submit, el valor debe estar vacio porque se envió el 'mesaje'
+    });
+
 });
