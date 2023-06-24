@@ -14,8 +14,8 @@ export const CounterCustomHook = () => {
         <hr />
         
         <button className='btn btn-primary' onClick=
-          {
-            increment
+          { // forma en la cual a traves de un argumento le dices a la funcion lo que queires que haga
+            (value) => increment(2)
           }
         >+2</button>
         <button className='btn btn-primary' onClick=
@@ -25,7 +25,7 @@ export const CounterCustomHook = () => {
         >Reset</button>
         <button className='btn btn-primary' onClick=
           {
-            decrement
+            (value) => decrement(2)
           }
         >-2</button>
 

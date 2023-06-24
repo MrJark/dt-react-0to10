@@ -9,14 +9,15 @@ export const useCounter = ( initialValue = 0 ) => {
     // Tarea: crear los botones y hacer que funcionen (CONSEGUIDA)
 
     // para externalizar el setCounter, hay que crear las constantes que van a usar el setCounter:
-    const increment = () => {
-        setCounter(counter + 2);
+    const increment = ( value = 1 ) => {
+        // le añades un argumento en forma de valor que quieres que tenga 
+        setCounter(counter + value);
     };
 
     // si fuera una app de compras, no querrias que el carrito bajara de cero, por tanto tendrías que hacer una validación en el decrement como if ( counter === 0 ) return;
-    const decrement = () => {
+    const decrement = ( value = 1 ) => {
         // if (counter === 0) return;
-        setCounter(counter - 2);
+        setCounter(counter - value);
     };
     
     const resets = () => {
