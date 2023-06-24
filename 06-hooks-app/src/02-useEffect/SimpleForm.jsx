@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Message } from './Message';
 
 
 export const SimpleForm = () => {
@@ -24,15 +25,16 @@ export const SimpleForm = () => {
     // efects -> el useEffect es una función que tinee dentro un callback
     // no es recomendable tener un useEffect sin una dependencia, es decir, sin un segundo argumento. Si únicamente pones los brackets, [], le estás diciendo que solo quieres que se dispare al inicio y no más
     useEffect( () => {
-        console.log('useEffect was call');
+        // console.log('useEffect was call');
     }, []);
     // recomendación de React: en vez de hacer un useEffect enorme, es mejor hacer uno por cada elemento que quieras que haga
     useEffect( () => {
-        console.log('formState changed');
+        // console.log('formState changed');
     }, [formState]); // le dices que se dispare cada vez que pase algo en el formState
     useEffect( () => {
-        console.log('email changed');
+        // console.log('email changed');
     }, [email]); // le dices que se dispare cada vez que pase algo en el email lo que hará que tb se dispare el useEffect del formState
+    
     
 
   return (
@@ -55,6 +57,11 @@ export const SimpleForm = () => {
             // value={email}
             onChange={onInputChange}
         />
+
+        {
+            // ( username === 'mrjark' ) ? <Message/> : null
+            ( username === 'mrjark' ) && <Message/>
+        }
     </>
   )
 }
