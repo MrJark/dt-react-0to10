@@ -7,3 +7,5 @@ Un hook no es más que **una función** común y corriente que tiene un **return
 ## Tener en cuenta
 
 La desestructuración dependerá de la manera en que hagas el return del hook. Al ser un **objeto**, usas las **curly brackets**, { }, pero si fuera un **array**, ( ), tendrás que usar los **brackets normales**, [ ], para desestructurar.
+
+API que voy a usar -> https://rickandmortyapi.com
