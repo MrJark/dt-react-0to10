@@ -3,6 +3,7 @@ import { useFetch } from '../hooks/useFetch';
 
 export const MultipleCustomHook = () => {
 
+    // const { data, isLoading, hasError } = useFetch('https://pokeapi.co/api/v2/pokemon')
     const { data, isLoading, hasError } = useFetch('https://rickandmortyapi.com/api/character')
 
     // if( isLoading ){
@@ -11,7 +12,9 @@ export const MultipleCustomHook = () => {
     //     )
     // }
 
-    console.log({ data, isLoading, hasError });
+    // console.log({ data, isLoading, hasError });
+    const { results } = !!data && data;
+    console.log(data);
 
     return (
         <>
@@ -21,14 +24,14 @@ export const MultipleCustomHook = () => {
             { // usa las validaciones ternarias solo y tan solo si son pocas líneas de código
                 (isLoading) 
                     ? (
-                        <div className='alert alert-info text-center'>
+                        <div className="alert alert-info text-center">
                             Loading...
                         </div>
-                    ) : 
-                    (
-                        <blockquote className='blockquote text-end'>
-                            <p></p>
-                            <footer className='blockquote-footer'>Naval</footer>
+                    ) 
+                    : (
+                        <blockquote className="blockquote text-end">
+                            <p className="mb-1"></p>
+                            <footer className="blockquote-footer"></footer>
                         </blockquote>
 
                     )
