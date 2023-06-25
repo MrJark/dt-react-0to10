@@ -15,6 +15,7 @@ export const MultipleCustomHook = () => {
     // console.log({ data, isLoading, hasError });
     const { results } = !!data && data;
     console.log(data);
+    // console.log(results[0].name); // habilitando este comentario y recargando el navegador me da error debido al undefined
 
     return (
         <>
