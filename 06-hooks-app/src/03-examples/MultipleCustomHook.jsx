@@ -1,5 +1,4 @@
-import { useCounter } from '../hooks/useCounter';
-import { useFetch } from '../hooks/useFetch';
+import { useCounter, useFetch } from '../hooks';
 
 
 export const MultipleCustomHook = () => {
@@ -43,14 +42,11 @@ export const MultipleCustomHook = () => {
                         </div>
                     ) 
                     : (
-                        <div className='onColums'>
-                            <div>
-                                <h2>{name}</h2>
-                                <p>Status: {status}</p>
-                                <img src={image} alt={name} />
-                            </div>
+                        <div>
+                            <h2>{name}</h2>
+                            <p>Status: {status}</p>
+                            <img src={image} alt={name} />
                         </div>
-
                     )
             }
 
