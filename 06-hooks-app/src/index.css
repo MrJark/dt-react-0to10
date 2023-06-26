@@ -8,3 +8,11 @@ button {
 h1 {
     color: #0c9a9d;
 }
+
+.onColums {
+    display: flex;
+}
+
+.btn-container {
+    margin-left: 24px;
+}

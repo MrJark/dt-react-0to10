@@ -1,10 +1,12 @@
+import { useCounter } from '../hooks/useCounter';
 import { useFetch } from '../hooks/useFetch';
 
 
 export const MultipleCustomHook = () => {
 
+    const { increment } = useCounter();
     // const { data, isLoading, hasError } = useFetch('https://pokeapi.co/api/v2/pokemon')
-    const { data, isLoading, hasError } = useFetch('https://rickandmortyapi.com/api/character')
+    const { data, isLoading, hasError } = useFetch(`https://rickandmortyapi.com/api/character?page=${1}`)
 
     // if( isLoading ){
     //     return(
@@ -13,9 +15,20 @@ export const MultipleCustomHook = () => {
     // }
 
     // console.log({ data, isLoading, hasError });
+
+    // Como se que en la pag 1 hay 20 characters, hago un número aleatorio entre el 0 y el 19
+    const randomNum = (min, max) => {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
+    const randCharacter = randomNum(0, 19);
+
     const { results } = !!data && data;
     console.log(data);
+    const { name, status, image, id } = !!results && results[randCharacter]; // hago esto así porque sino me da error al desestructurar algo de undefined al igual que en la data
+    console.log( name, status, image, id);
     // console.log(results[0].name); // habilitando este comentario y recargando el navegador me da error debido al undefined
+
+
 
     return (
         <>
@@ -30,13 +43,23 @@ export const MultipleCustomHook = () => {
                         </div>
                     ) 
                     : (
-                        <blockquote className="blockquote text-end">
-                            <p className="mb-1"></p>
-                            <footer className="blockquote-footer"></footer>
-                        </blockquote>
+                        <div className='onColums'>
+                            <div>
+                                <h2>{name}</h2>
+                                <p>Status: {status}</p>
+                                <img src={image} alt={name} />
+                            </div>
+                        </div>
 
                     )
             }
+
+            <div className='btn-container'>
+                <button className='btn btn-primary mt-3' disabled={isLoading} onClick={ () => increment() }>
+                    Random Character
+                </button>
+            </div>
+
 
         </>
 
