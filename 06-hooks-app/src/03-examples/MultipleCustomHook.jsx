@@ -1,10 +1,17 @@
 import { useCounter, useFetch } from '../hooks';
+import { BtnRandom, Character, Loading } from './index';
+
+
 
 
 export const MultipleCustomHook = () => {
 
+    const { isLoading } = useFetch(`https://rickandmortyapi.com/api/character?page=${1}`);
     const { increment } = useCounter();
-    // const { data, isLoading, hasError } = useFetch('https://pokeapi.co/api/v2/pokemon')
+    /**
+     * 
+
+    const { data, isLoading, hasError } = useFetch('https://pokeapi.co/api/v2/pokemon')
     const { data, isLoading, hasError } = useFetch(`https://rickandmortyapi.com/api/character?page=${1}`)
 
     // if( isLoading ){
@@ -26,6 +33,8 @@ export const MultipleCustomHook = () => {
     const { name, status, image, id } = !!results && results[randCharacter]; // hago esto así porque sino me da error al desestructurar algo de undefined al igual que en la data
     console.log( name, status, image, id);
     // console.log(results[0].name); // habilitando este comentario y recargando el navegador me da error debido al undefined
+     * 
+     */
 
 
 
@@ -34,7 +43,15 @@ export const MultipleCustomHook = () => {
             <h1>Rinck and Morty Characters</h1>
             <hr />
 
-            { // usa las validaciones ternarias solo y tan solo si son pocas líneas de código
+            {
+                (isLoading)
+                    ? <Loading/>
+                    : <Character/>
+            }
+            
+            {/* <BtnRandom/> */} 
+
+            {/* { // usa las validaciones ternarias solo y tan solo si son pocas líneas de código
                 (isLoading) 
                     ? (
                         <div className="alert alert-info text-center">
@@ -48,13 +65,12 @@ export const MultipleCustomHook = () => {
                             <img src={image} alt={name} />
                         </div>
                     )
-            }
+            } */}
 
-            <div className='btn-container'>
-                <button className='btn btn-primary mt-3' disabled={isLoading} onClick={ () => increment() }>
-                    Random Character
-                </button>
-            </div>
+            <button className='btn btn-primary mt-3'  onClick={ () => increment() }>
+                Random Character
+            </button>
+            
 
 
         </>
