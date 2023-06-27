@@ -10,7 +10,7 @@ const heavyStuff = (iteartionNUmber  = 100) => {
 
 export const MemoHook = () => {
 
-    const initialValue = 10;
+    const initialValue = 0;
     const [counter, setCounter] = useState( initialValue );
     const [truly, setTruly] = useState(true);
 
