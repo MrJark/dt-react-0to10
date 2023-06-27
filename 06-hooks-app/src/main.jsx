@@ -9,6 +9,8 @@ import { FormCustumHook } from './02-useEffect/FormCustomHook';
 import { MultipleCustomHook } from './03-examples/MultipleCustomHook';
 import { FocusScreen } from './04-useRef/FocusScreen';
 import { Layout } from './05-useLayoutEffect/Layout';
+import { Memorize } from './06-memo/Memorize';
+import { MemoHook } from './06-memo/MemoHook';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -20,6 +22,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     // <FormCustumHook/>
     // <MultipleCustomHook/>
     // <FocusScreen/>
-    <Layout/>
+    // <Layout/>
+    // <Memorize/>
+    <MemoHook/>
   // </React.StrictMode>,
 )
