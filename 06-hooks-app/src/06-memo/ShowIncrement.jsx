@@ -11,7 +11,8 @@ export const ShowIncrement = React.memo(( { increment } ) => {
     <button 
         className="btn btn-primary"
         onClick={ () => {
-            increment();
+            // queires incrementar de 2 en 2
+            increment(2);
         }}
     >
         Increment
