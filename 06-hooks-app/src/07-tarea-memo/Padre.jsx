@@ -28,6 +28,7 @@ export const Padre = () => {
 
     const incrementCallback = useCallback(
       (value) => {
+        // el 'valor' es el último valor que tenía la función (empieza en cero) y el value es el cual le sumas el cuál vine determinado por la función números
         setValor( ( valor ) => valor + value)
       },
       [],
