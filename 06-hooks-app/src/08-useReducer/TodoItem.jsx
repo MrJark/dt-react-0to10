@@ -1,7 +1,7 @@
 
 
 
-export const TodoItem = ( { todo } ) => {
+export const TodoItem = ( { todo, onDeleteTodo } ) => {
 
 
 
@@ -12,7 +12,7 @@ export const TodoItem = ( { todo } ) => {
                 <span className="align-self-center">{ todo.task }</span>
                 <button 
                     className="btn btn-danger" 
-                    onClick={() => onDeleteTodo( todo.id ) }
+                    onClick={ () => onDeleteTodo( todo.id ) }
                 >
                     Delete</button>
             </li>

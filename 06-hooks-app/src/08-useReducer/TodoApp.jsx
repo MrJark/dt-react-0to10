@@ -46,7 +46,7 @@ export const TodoApp = () => {
     const handleDeleteTodo = ( id ) => {
         // aquí usas el dispatch para eliminar, dando como mensaje el type y elimiando el todo que tenga el id específico
         dispatch({
-            type: '[TODO] Add Todo',
+            type: '[TODO] Remove Todo',
             payload: id  
         }); 
     }
@@ -54,7 +54,6 @@ export const TodoApp = () => {
     // Tarea: simplificar el layout en varios archivos con funciones sencillas (no conseguida. No estaba centrado y no conseguia hacerla después de 20' )
     return (
         <>
-        
             <h1>TodoApp</h1>
             <hr />
             <h2>Hechos: <small>10</small> - Pendientes: <small>2</small></h2>
@@ -64,22 +63,21 @@ export const TodoApp = () => {
 
                     <TodoList 
                         todos = { todos }
-                        
+                        onDeleteTodo = { id => handleDeleteTodo(id) }
                     />
 
                 </div>
+                
                 <div className="col-5">
                     <h4>Add TODO</h4>
                     <hr />
                     
                     <TodoAdd
                         onNewTodo = { handleNewTodo }
-                        onDeleteTodo = { id => handleDeleteTodo(id) }
+                        
                     />
                 </div>
             </div>
-
-        
         </>
     )
 }
