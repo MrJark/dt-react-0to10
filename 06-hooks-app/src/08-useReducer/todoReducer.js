@@ -5,7 +5,6 @@ export const todoReducer = ( initialState, action ) => {
         case 'AABC':
             throw new Error('Action.type = AABC no está implementada aun')
             
-
         default:
             return initialState;
     }
