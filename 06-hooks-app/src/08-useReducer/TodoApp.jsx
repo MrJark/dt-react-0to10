@@ -14,14 +14,21 @@ const initialState = [
     },
 ];
 
-const handleNewTodo = ( todo ) => {
-    console.log({todo});
-};
 
 export const TodoApp = () => {
 
     // solo pasas la rederencia de todoReducer al useReducer para que el mismo la ejecute
     const [ todos, dispatch ] = useReducer(todoReducer, initialState);
+
+    const handleNewTodo = ( todo ) => {
+        const action = {
+            type: '[TODO] Add Todo',
+            payload: todo
+        }
+    
+        // con esto añades el action al dispatch
+        dispatch(action)
+    };
 
     // Tarea: simplificar el layout en varios archivos con funciones sencillas (no conseguida. No estaba centrado y no conseguia hacerla después de 20' )
     return (
@@ -45,7 +52,7 @@ export const TodoApp = () => {
                     <hr />
                     
                     <TodoAdd
-                        onNewTodo = {handleNewTodo}
+                        onNewTodo = { handleNewTodo }
                     />
                 </div>
             </div>
