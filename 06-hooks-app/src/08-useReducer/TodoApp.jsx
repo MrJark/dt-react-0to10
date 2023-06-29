@@ -45,11 +45,22 @@ export const TodoApp = () => {
 
     const handleDeleteTodo = ( id ) => {
         // aquí usas el dispatch para eliminar, dando como mensaje el type y elimiando el todo que tenga el id específico
+        
         dispatch({
             type: '[TODO] Remove Todo',
             payload: id  
         }); 
-    }
+    };
+
+    const handleToggleTodo = ( id ) => {
+        // muy parecida a la delete
+        console.log({id});
+        dispatch({
+            type: '[TODO] Toggle Todo',
+            payload: id  
+        }); 
+    };
+    
 
     // Tarea: simplificar el layout en varios archivos con funciones sencillas (no conseguida. No estaba centrado y no conseguia hacerla después de 20' )
     return (
@@ -64,10 +75,11 @@ export const TodoApp = () => {
                     <TodoList 
                         todos = { todos }
                         onDeleteTodo = { id => handleDeleteTodo(id) }
+                        onToggleTodo = { handleToggleTodo } // aquí es donde se crea la función que hará que se tache, el handleToggleTodo
                     />
 
                 </div>
-                
+
                 <div className="col-5">
                     <h4>Add TODO</h4>
                     <hr />

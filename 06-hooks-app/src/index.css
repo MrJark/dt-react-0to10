@@ -32,3 +32,18 @@ p {
 img {
     border-radius: 12px;
 }
+.btn-toggle-modi {
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    align-self: center;
+    margin-right: -200px;
+    border: none;
+    background: #cacaca;
+}
+.btn-toggle-modi:hover {
+    background: #8c8c8c;
+    border-color: #222222;
+    box-shadow: 2px 2px 2px #383838;
+
+}
