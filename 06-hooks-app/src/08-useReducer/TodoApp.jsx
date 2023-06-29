@@ -19,6 +19,9 @@ const init = () => {
     return JSON.parse( localStorage.getItem('todos')) || []; // .parse para pasar el string al elemento que era antes, en este caso un objeto. Si no hay nada en el json, que sea un arreglo vacio
 }
 
+// Tarea 2: hacer un custom hook (useTodo) donde ponga la lógica pre-return y se quede sencilla la TodoApp
+// lo que tengo que extraer y por tanto eliminar de aquí sería: todos, handleNewTodo, handleDeleteTodo, handleToggleTodo
+// se tendría que ver tal que así: const  { todos, handleNewTodo, handleDeleteTodo, handleToggleTodo } = useTodo();
 
 export const TodoApp = () => {
 
@@ -62,7 +65,7 @@ export const TodoApp = () => {
     };
     
 
-    // Tarea: simplificar el layout en varios archivos con funciones sencillas (no conseguida. No estaba centrado y no conseguia hacerla después de 20' )
+    // Tarea 1: simplificar el layout en varios archivos con funciones sencillas (no conseguida. No estaba centrado y no conseguia hacerla después de 20' )
     return (
         <>
             <h1>TodoApp</h1>
