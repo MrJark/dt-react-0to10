@@ -3,7 +3,7 @@
 export const LogingPage = () => {
   return (
     <>
-        <h1>Loading Page</h1>
+        <h1>Loging Page</h1>
         <hr />
     
     </>
