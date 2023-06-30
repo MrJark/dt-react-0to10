@@ -11,7 +11,7 @@ h1,
 h2,
 h3,
 h4 {
-    color: #6AD2D3;
+    color: #0c9a9d;
 }
 
 p {
@@ -46,4 +46,11 @@ img {
     border-color: #222222;
     box-shadow: 2px 2px 2px #383838;
 
+}
+a {
+    margin-right: 8px;
+    text-decoration: none;
+    color: #ab79dd;
+    font-size: large;
+    font-weight: 600;
 }
