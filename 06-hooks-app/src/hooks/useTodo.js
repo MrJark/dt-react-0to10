@@ -43,10 +43,21 @@ export const useTodo = () => {
         }); 
     };
 
+    // Tarea: crear todoCount y pendingTodoCount para ponerlos en el html y que diga que tareas faltas y cuantas tengo en total
+    const todoCount = () => {
+        return todos.length;
+    };
+
+    const pendingTodoCount = () => {
+        return todos.filter( todo => !todo.achieved).length
+    };
+
     return {
         todos,
         handleNewTodo,
         handleDeleteTodo,
         handleToggleTodo,
+        todoCount,
+        pendingTodoCount,
     }
 }

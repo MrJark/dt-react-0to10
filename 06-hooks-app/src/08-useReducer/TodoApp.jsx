@@ -6,24 +6,13 @@ import { useTodo } from '../hooks';
 
 export const TodoApp = () => {
     
-    const  { todos, handleNewTodo, handleDeleteTodo, handleToggleTodo } = useTodo([]);
-
-    console.log(todos[0].achieved);
-
-    const count = 0;
-    for (let i = 0; i < todos.length; i++) {
-        const element = todos[i];
-        if (element.achieved) {
-            count++;
-        }
-    }
-    console.log(count);
+    const  { todos, todoCount, handleNewTodo, pendingTodoCount, handleDeleteTodo, handleToggleTodo } = useTodo([]);
     
     return (
         <>
             <h1>TodoApp</h1>
             <hr />
-            <h2>Done: <small>{todos.length}</small> - Pending: <small>{  }</small></h2>
+            <h2>Done: <small>{todoCount()}</small> - Pending: <small>{pendingTodoCount()}</small></h2>
 
             <div className="row">
                 <div className="col-7">
