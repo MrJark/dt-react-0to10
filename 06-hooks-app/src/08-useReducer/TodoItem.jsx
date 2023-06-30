@@ -8,7 +8,7 @@ export const TodoItem = ( { todo, onDeleteTodo, onToggleTodo } ) => { // cada fu
     return (
         // añado el onClick en el span para tacchar como completada la tarea. Es decir, cuando lo toque se tachará y la función que voy a crear para ello va a ser el onToggleTodo. Estoy creando la función del hijo al abuelo. 
         <>
-            <li className="list-group-item d-flex justify-content-between">
+            <li className="list-group-item d-flex justify-content-between mt-2">
                 <button 
                     className="btn-toggle-modi"
                     onClick= { () => onToggleTodo( todo.id) }

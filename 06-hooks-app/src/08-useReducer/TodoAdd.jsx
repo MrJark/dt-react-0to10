@@ -36,7 +36,7 @@ export const TodoAdd = ( { onNewTodo } ) => {
                 />
                 <button
                     type="submit"
-                    className="btn btn-secondary mt-1"
+                    className="btn btn-secondary mt-2"
                 >Add TODO</button>
             </form>
 
