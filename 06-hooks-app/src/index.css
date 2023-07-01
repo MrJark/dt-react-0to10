@@ -58,3 +58,6 @@ a {
 /* 
     Navbar
 */
+.navbar-nav .nav-link.active {
+    color: #ab79dd;
+}

@@ -1,21 +1,27 @@
 import { Navigate, Route, Routes, Link } from 'react-router-dom';
 import { HomePage, AboutPage, LoginPage, Navbar } from './index'
+import { UserProvider } from './context/UserProvider';
 
 export const MainApp = () => {
-  return (
-    <>
-        <h1>MainApp</h1>
-        <hr />
-          <Navbar/>
-        
-        <Routes>
-          <Route path='/' element = {<HomePage/>} />
-          <Route path='login' element = {<LoginPage/>} />
-          <Route path='about' element = {<AboutPage/>} />
+  
 
-          <Route path='/*' element = {<Navigate to='/'/>} />
-        </Routes>
-    </>
+  return (
+    <UserProvider>
+
+      <h1>MainApp</h1>
+      <hr />
+      <Navbar/>
+      
+      <Routes>
+        <Route path='/' element = {<HomePage/>} />
+        <Route path='login' element = {<LoginPage/>} />
+        <Route path='about' element = {<AboutPage/>} />
+
+        <Route path='/*' element = {<Navigate to='/'/>} />
+      </Routes>
+
+    </UserProvider>
+
     // los path son la manera en la que puedes acceder al componente, en este caso, a las páginas, a través del url.
     // El / solo es el home pero el /login te lleva a la página del login y así sucesivamente
     /* -- */
