@@ -2,6 +2,7 @@ body {
     padding: 12px;
     background: #222222;
     color: #F9F9F9;
+    letter-spacing: 1px;
 }
 
 button {
@@ -54,3 +55,6 @@ a {
     font-size: large;
     font-weight: 600;
 }
+/* 
+    Navbar
+*/
