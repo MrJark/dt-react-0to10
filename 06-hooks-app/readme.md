@@ -28,3 +28,7 @@ Tiene 2 argumentos:
 
   1. Funcióm que llama a un elemento que quieres renderizar y momorizar.
   2. Dependencias que queires que tengan en cuentra para memorizarlo, es como si fuera un condicional, si cambia este segundo argumento, renderízalo otra vez.
+
+## Para hacer testing
+
+[Pasos a seguir para instalar Jest](https://cursos.devtalles.com/courses/take/react-cero-experto/lessons/36156011-inicio-de-proyecto-pruebas-sobre-hooks) un método de prueba para los elementos de la aplicación
