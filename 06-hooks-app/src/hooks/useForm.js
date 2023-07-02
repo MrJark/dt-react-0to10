@@ -29,4 +29,4 @@ export const useForm = ( initialForm = { } ) => {
         ...formState,
         onResetForm,
     }
-}
+};
