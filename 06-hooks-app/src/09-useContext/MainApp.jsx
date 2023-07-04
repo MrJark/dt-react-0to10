@@ -30,4 +30,4 @@ export const MainApp = () => {
     // Los elementos 'a' se usan normalmente para links EXTERNOS al sitio ya que renderizan todo de cero, si lo haces para tu página, estarás renderizando todo de nuevo y no es eficiente. Para ello, react tiene un componente llamado 'link' el cual hace lo mismo que un anchor pero sin el refesh pero tienens que importarlo de react-rputer-dom
     // Estos elementos Link, react los traduce a html como elementos 'a' por tanto, a la hora de darle estilos, en el css, deberás poner 'a' haciendo referencia al anchor o con clases. El 'href' de los 'a' los sustituye react por 'to' y el path a donde quieres que te lleve
   )
-}
+};
