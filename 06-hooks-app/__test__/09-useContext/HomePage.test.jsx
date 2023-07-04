@@ -24,18 +24,20 @@ describe('test on HomePage', () => {
         expect( preTag.innerHTML ).toBe('null');
         // screen.debug();
     });
-
+    
     test('should show the user1', () => {
-
+        
         render(
-            <UserContext.Provider value={ { user1 } }>
+            <UserContext.Provider value={ { user: user1 } }>
                 <HomePage/>
             </UserContext.Provider>
         );
         const preTag = screen.getByLabelText('preForTested');
-
-        expect( preTag.innerHTML ).toContain(user1.id);
-        console.log( preTag.innerHTML )
+        
+        expect( preTag.innerHTML ).toContain(user1.id.toString()); // hay que ponerle el .String porque es un arreglo
+        expect( preTag.innerHTML ).toContain(`${user1.id}`); // lo que es lo mismo que lo de arriba
+        expect( preTag.innerHTML ).toContain(user1.name);
+        console.log(preTag.innerHTML);
 
     });
 
