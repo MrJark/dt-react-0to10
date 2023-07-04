@@ -12,14 +12,14 @@ export const TodoApp = () => {
         <>
             <h1>TodoApp</h1>
             <hr />
-            <h2>Done: <small>{todoCount()}</small> - Pending: <small>{pendingTodoCount()}</small></h2>
+            <h2>Done: <small>{todoCount}</small> - Pending: <small>{pendingTodoCount}</small></h2>
 
             <div className="row">
                 <div className="col-7">
 
                     <TodoList 
                         todos = { todos }
-                        onDeleteTodo = { id => handleDeleteTodo(id) }
+                        onDeleteTodo = { handleDeleteTodo }
                         onToggleTodo = { handleToggleTodo } 
                     />
 
