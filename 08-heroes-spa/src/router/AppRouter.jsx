@@ -2,11 +2,13 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { Navbar } from '../ui';
 
-import { AboutPage } from '../auth/pages/AboutPage';
-import { LoginPage } from '../auth/pages/LoginPage';
+import { AboutPage, LoginPage } from '../auth';
+// import { AboutPage } from '../auth/pages/AboutPage';
+// import { LoginPage } from '../auth/pages/LoginPage';
 
-import { Marvel } from '../heroes/pages/Marvel';
-import { DC } from '../heroes/pages/DC';
+import { Marvel, DC } from '../heroes';
+// import { Marvel } from '../heroes/pages/Marvel';
+// import { DC } from '../heroes/pages/DC';
 
 export const AppRouter = () => {
 

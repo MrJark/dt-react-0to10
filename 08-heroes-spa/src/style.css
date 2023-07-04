@@ -4,18 +4,22 @@
   --primary: #0C9A9D;
   --socondary: #ab79dd;
   --background-dark: #222222;
+  --background-dark-light: #404141;
 
 }
-
 
 body {
   padding: 12px;
   font-family: 'Ubuntu', Verdana, Tahoma, sans-serif;
-  background: #222222;
-  color: #F9F9F9;
+  background: var(--background-dark);
+  color: var(--white);
   letter-spacing: 1px;
 }
 
 h1, h2, h3, h4 {
-  color: #0c9a9d;
+  color: var(--primary);
+}
+
+.navbar-bg-modified {
+  background: var(--background-dark-light);
 }
