@@ -41,5 +41,4 @@ describe('test on HomePage', () => {
 
     });
 
-
-})
+});

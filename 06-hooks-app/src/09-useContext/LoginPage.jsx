@@ -13,7 +13,7 @@ export const LoginPage = () => {
       <hr />
       <h2>{ user?.name }</h2>
     
-      <pre>
+      <pre aria-label='preForTested'>
         {JSON.stringify(user)}
       </pre>
 
