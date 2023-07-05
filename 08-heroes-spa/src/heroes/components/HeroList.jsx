@@ -1,4 +1,5 @@
-// import { heroes } from "../data";
+
+import { useMemo } from "react";
 import { getHeroByPublisher } from "../helpers";
 import { HeroCard } from "./";
 
@@ -10,7 +11,7 @@ He intentado buscar en los otros archivos del curso pero no lo he conseguido des
 
 export const HeroList = ( { publisher } ) => {
 
-    const heroes = getHeroByPublisher( publisher );
+    const heroes = useMemo( () => getHeroByPublisher( publisher ), [publisher]); // se usa el memo para que no se renderice el componente cada vez que se haga un cambión. Solo se renderizará cunado la dependencia, el publisher, cambie.
     
     return (
         <>

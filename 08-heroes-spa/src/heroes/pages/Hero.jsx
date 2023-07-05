@@ -1,5 +1,6 @@
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { getHeroById } from '../helpers';
+import { useMemo } from 'react';
 
 
 export const Hero = () => {
@@ -8,7 +9,9 @@ export const Hero = () => {
     // console.log(params);
     const { id } = useParams(); // hook creado por react-router que sirve para obtener los parámetros
     const navegate = useNavigate();
-    const hero = getHeroById(id);
+
+    // const hero = getHeroById(id); // no es eficiente
+    const hero = useMemo( () => getHeroById(id), [id] ); // se usa el memo para que no se renderiza cada vez que un componente cambie. Solo cambiará cuando la dependencia, el id, cambie. Esto es mucho más eficiente
 
     // Tarea: hacer que el btn GoBack funcione ( no conseguida, no sabía que tenía que llamar al useNavegate)
 
@@ -16,6 +19,7 @@ export const Hero = () => {
         // return <Navigate to="/marvel"/> // como lo estaba haciendo
         navegate(-1); // esto lleva al usuario a la pag anterior, incluida sacarlo de la app
     };
+
 
     if( !hero ) { // si no exsite un hero se redirecciona
         return <Navigate to="/marvel"/>
