@@ -4,7 +4,6 @@
 export const TodoItem = ( { todo, onDeleteTodo, onToggleTodo } ) => { // cada función/elemento qeu queires transferir al padre o al hijo, tienes que tenerlo la prop, en este caso, la desestructuración de la prop
 
 
-
     return (
         // añado el onClick en el span para tacchar como completada la tarea. Es decir, cuando lo toque se tachará y la función que voy a crear para ello va a ser el onToggleTodo. Estoy creando la función del hijo al abuelo. 
         <>
