@@ -1,5 +1,6 @@
 // import { heroes } from "../data";
 import { getHeroByPublisher } from "../helpers";
+import { HeroCard } from "./";
 
 /*
 Tarea: a través de este HeroList tengo que llamar a los heroes y mostrar en las páginas respectivas de DC una lista con solo los de DC e igual en Marvel
@@ -13,15 +14,16 @@ export const HeroList = ( { publisher } ) => {
     
     return (
         <>
-            <ul className="list-group">
+            <div className="row rows-cols1 row-cols-md-3 g-3">
                 {
                     heroes.map( hero => (
-                        <li key={ hero.id }>
-                            { hero.superhero }
-                        </li>
+                        <HeroCard 
+                            key={ hero.id }
+                            {...hero} // desestructuro el hero porque hacen falta todas las props y es más rápido hacerlo así que de una en una
+                        />
                     ))
                 }
-            </ul>
+            </div>
         </>
     )
 }
