@@ -1,9 +1,20 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 
 export const Navbar = () => {
-    // Tarea: hacer que los links del Navbar al hacer click cambien el estado a active o lo elimine (achieved) aunque he de decir que sabía medio como era, he tenido que buscar como era de verdad. me ha daltado poner como argumento el isActive, creía que era una propiedad del propio componente
+    // Tarea: hacer que los links del Navbar al hacer click cambien el estado a active o lo elimine (conseguida) aunque he de decir que sabía medio como era, he tenido que buscar como era de verdad. me ha daltado poner como argumento el isActive, creía que era una propiedad del propio componente
+    
+    // este useNavegate es un hook que han personalizado los desarrolladores de react-router para hacer la navegación más sencilla. Es un custom hook porque no es 'oficial' pero es de la pag oficial de react-router
+    const navigate = useNavigate(); 
+
+    const onLogout = () => { // para añadir la funcionalidad al btn de logout y es aquí arriba porque los componentes deben ser lo más sencillos posibles
+        navigate('/login', {
+            replace: true
+        });
+    };
+
     return (
+
         <nav className="navbar navbar-expand-sm navbar-dark navbar-bg-modified p-2">
             
             <Link 
@@ -49,6 +60,7 @@ export const Navbar = () => {
                     </span>
                     <button
                         className='nav-item btn btn-secondary'
+                        onClick={onLogout}
                     >
                     Logout</button>
                 </ul>
