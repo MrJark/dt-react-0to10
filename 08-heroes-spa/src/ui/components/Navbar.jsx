@@ -31,12 +31,20 @@ export const Navbar = () => {
                     >
                         DC
                     </NavLink>
+                    
+                    <NavLink 
+                        // className="nav-item nav-link" 
+                        className={ ({isActive}) => `nav-item nav-link ${ isActive ? 'active' : '' }`}
+                        to="/search"
+                    >
+                        Seach
+                    </NavLink>
                 </div>
             </div>
 
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
                 <ul className="navbar-nav ml-auto">
-                    <span className='nav-item nav-link '>
+                    <span className='nav-item nav-link navbar-span'>
                         Chema
                     </span>
                     <button

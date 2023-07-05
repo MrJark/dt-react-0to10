@@ -1,30 +1,29 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
-import { Navbar } from '../ui';
+import { AboutPage, LoginPage } from '../auth'; 
+import { HeroesRoutes } from '../heroes';
 
-import { AboutPage, LoginPage } from '../auth';
-// import { AboutPage } from '../auth/pages/AboutPage';
-// import { LoginPage } from '../auth/pages/LoginPage';
+// import { Marvel, DC } from '../heroes';
 
-import { Marvel, DC } from '../heroes';
-// import { Marvel } from '../heroes/pages/Marvel';
-// import { DC } from '../heroes/pages/DC';
+
+// he simplidficado todas las imports gracias a los barrels
 
 export const AppRouter = () => {
 
   return (
     <>
-      <Navbar />
-
       <Routes>
 
           <Route path='about' element={<AboutPage/>}/>
           <Route path='login' element={<LoginPage/>}/>
 
-          <Route path='marvel' element={<Marvel/>}/>
-          <Route path='dc' element={<DC/>}/>
+          {/* Puedo eliminar estas rutas de aquí porque ya las tengo en el HeroesRoutes además, tiene más sentido que estén en el route de los heroes pero tienes que crear la ruta que te lleve al HeroesRoutes*/}
 
-          <Route path='/*' element={<Navigate to='/marvel'/>}/>
+          <Route path='/*' element={<HeroesRoutes/>}/>
+          {/* <Route path='marvel' element={<Marvel/>}/>
+          <Route path='dc' element={<DC/>}/> */}
+
+          {/* <Route path='/*' element={<Navigate to='/marvel'/>}/> */}
       </Routes>
     </>
   )
