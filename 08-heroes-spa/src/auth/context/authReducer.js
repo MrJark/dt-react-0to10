@@ -1,4 +1,6 @@
+import { types } from "../types";
 
+// el useReducer no debe llamar NUNCA ninguna función externa. Siempre se debe de resolver con el state u el action
 
 // const initialState = { // estado inicial de un log es por default no logeado
 //     logged: false,
@@ -13,7 +15,7 @@ export const authReducer = (state = {}, action ) => {
             return {
                 ...state, // siempre se debe desestructurar porque si futuros buildings generas más propiedades
                 logged: true,
-                name: action.payload,
+                user: action.payload,
             };
 
         case types.logout:

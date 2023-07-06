@@ -1,9 +1,15 @@
+import { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../auth/context';
 
 
 export const Navbar = () => {
     // Tarea: hacer que los links del Navbar al hacer click cambien el estado a active o lo elimine (conseguida) aunque he de decir que sabía medio como era, he tenido que buscar como era de verdad. me ha daltado poner como argumento el isActive, creía que era una propiedad del propio componente
     
+    // Tarea: hacer que el nombre del usuario aparezca al hacer login en el navbar ( no conseguida )
+    const { user } = useContext( AuthContext ) // no conseguido porque yo estaba desestructurando el login y era el user
+    
+
     // este useNavegate es un hook que han personalizado los desarrolladores de react-router para hacer la navegación más sencilla. Es un custom hook porque no es 'oficial' pero es de la pag oficial de react-router
     const navigate = useNavigate(); 
 
@@ -56,7 +62,7 @@ export const Navbar = () => {
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
                 <ul className="navbar-nav ml-auto">
                     <span className='nav-item nav-link navbar-span'>
-                        Chema
+                        {user?.name} {/* debe tener el ? porque sino da error ya que sino no estaría loggeado */}
                     </span>
                     <button
                         className='nav-item btn btn-secondary'
