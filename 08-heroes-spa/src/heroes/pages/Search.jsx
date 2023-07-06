@@ -1,7 +1,10 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
+
 import { useForm } from '../../hooks';
+
 import { HeroCard } from '../components';
+import { getHeroByName } from '../helpers';
 
 
 export const Search = () => {
@@ -13,9 +16,11 @@ export const Search = () => {
     // const query = queryString.parse( location.search ); 
     const { q = '' } = queryString.parse( location.search ); // para parsear se una manera mas sencilla
     
-
+    const heroes = getHeroByName(q); // para coger el hero con el query que puso el usuario
+   
+    
     const { searchText, onInputChange } = useForm({ // hook creado anteriormente y que se puede utilizar para controlar el formulario
-        searchText: '',
+        searchText: q,
     });
 
     const onSearchSub = ( e ) => { // la e es el evento
@@ -62,10 +67,13 @@ export const Search = () => {
                         Search a hero
                     </div>
                     <div className="alert alert-danger">
-                        There's not a hero with <b>{q}</b>
+                        There's not a hero with <b>{ q }</b>
                     </div>
-
-                    {/* <HeroCard /> */}
+                    {
+                        heroes.map( hero => (
+                            <HeroCard key={ hero.id } { ...hero }/>
+                        ))
+                    }
                 </div>    
             </div> 
             
