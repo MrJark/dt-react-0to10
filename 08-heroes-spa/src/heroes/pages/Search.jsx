@@ -1,24 +1,50 @@
+import { useLocation, useNavigate } from 'react-router-dom';
+import queryString from 'query-string';
+import { useForm } from '../../hooks';
 import { HeroCard } from '../components';
 
 
 export const Search = () => {
+
+    // hooks personalizados de react router dom
+    const navigate = useNavigate();
+    const location = useLocation(); 
+
+    // const query = queryString.parse( location.search ); 
+    const { q = '' } = queryString.parse( location.search ); // para parsear se una manera mas sencilla
+    
+
+    const { searchText, onInputChange } = useForm({ // hook creado anteriormente y que se puede utilizar para controlar el formulario
+        searchText: '',
+    });
+
+    const onSearchSub = ( e ) => { // la e es el evento
+        e.preventDefault();
+        if( searchText.trim().length <= 1) return;
+
+        // console.log({searchText});
+        navigate(`?q=${ searchText }`);
+    }
+
     return (
         <>
             <h1>Search</h1>
             <hr />
 
-            <div className="row">
+            <div className="row animate__animated animate__fadeIn">
                 <div className="col-5">
                     <h4>Searching</h4>
                     <hr />
 
-                    <form>
+                    <form onSubmit={ onSearchSub }>
                         <input 
                             type="text" 
                             placeholder="Search a hero"
                             className="form-control"
                             name="searchText"
                             autoComplete="off"
+                            value={ searchText }
+                            onChange={ onInputChange }
                         />
 
                         <button 
@@ -36,7 +62,7 @@ export const Search = () => {
                         Search a hero
                     </div>
                     <div className="alert alert-danger">
-                        There's not a hero with <b>id</b>
+                        There's not a hero with <b>{q}</b>
                     </div>
 
                     {/* <HeroCard /> */}
