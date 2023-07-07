@@ -36,10 +36,10 @@ export const AuthProvider = ({ children }) => {
         dispatch(action)
     }
 
-    const logOut = () => { // función para eliminar el user cuando das al btn logout
+    const logout = () => { // función para eliminar el user cuando das al btn logout
         localStorage.removeItem('user');
-        const action = {};
-        dispatch();
+        const action = { type: types.logout}
+        dispatch(action);
     }
 
 
@@ -48,7 +48,8 @@ export const AuthProvider = ({ children }) => {
         //el value es obligatorio en el Provider, aunque puede ser un objeto vacio
         <AuthContext.Provider value={{ 
             ...authState,
-            login: login
+            login: login,
+            logout: logout,
          }}>
             { children }
         </AuthContext.Provider>

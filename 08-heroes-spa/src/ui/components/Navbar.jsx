@@ -7,16 +7,18 @@ export const Navbar = () => {
     // Tarea: hacer que los links del Navbar al hacer click cambien el estado a active o lo elimine (conseguida) aunque he de decir que sabía medio como era, he tenido que buscar como era de verdad. me ha daltado poner como argumento el isActive, creía que era una propiedad del propio componente
     
     // Tarea: hacer que el nombre del usuario aparezca al hacer login en el navbar ( no conseguida )
-    const { user } = useContext( AuthContext ) // no conseguido porque yo estaba desestructurando el login y era el user
+    const { user, logout } = useContext( AuthContext ) // no conseguido porque yo estaba desestructurando el login y era el user
     
 
     // este useNavegate es un hook que han personalizado los desarrolladores de react-router para hacer la navegación más sencilla. Es un custom hook porque no es 'oficial' pero es de la pag oficial de react-router
     const navigate = useNavigate(); 
 
     const onLogout = () => { // para añadir la funcionalidad al btn de logout y es aquí arriba porque los componentes deben ser lo más sencillos posibles
+        logout();
         navigate('/login', {
             replace: true
         });
+
     };
 
     return (
