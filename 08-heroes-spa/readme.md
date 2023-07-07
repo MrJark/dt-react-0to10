@@ -21,3 +21,40 @@ De esta forma ya añadimos la carpeta heroes al build de producción.
 Para acceder a "public" tenemos que usar la ruta raíz /, por lo que ahora modificaremos la URL de heroImageUrl en el archivo HeroCard.jsx quedando: const heroImageUrl = `/heroes/${ id }.jpg`;.
 
 De esta forma ya se copian automáticamente las imágenes, y funciona nuestra app tanto en desarrollo como producción.
+
+## Testing (config)
+
+1. Instalaciones:
+
+  yarn add --dev jest babel-jest @babel/preset-env @babel/preset-react 
+  yarn add --dev @testing-library/react @types/jest jest-environment-jsdom
+
+2. Opcional: Si usamos Fetch API en el proyecto: (para este proyecto de heroes no la hemos utilizado por tanto, no hace falta)
+
+  yarn add --dev whatwg-fetch
+
+3. Actualizar los scripts del package.json
+  "scripts: {
+    ...
+    "test": "jest --watchAll"
+
+4. Crear la configuración de babel babel.config.cjs
+  module.exports = {
+      presets: [
+          [ '@babel/preset-env', { targets: { esmodules: true } } ],
+          [ '@babel/preset-react', { runtime: 'automatic' } ],
+        ],
+    };
+
+5. Opcional, pero eventualmente necesario, crear Jest config y setup:
+
+  jest.config.cjs
+
+  module.exports = {
+      testEnvironment: 'jest-environment-jsdom',
+      setupFiles: ['./jest.setup.js']
+    }
+  jest.setup.js
+
+  // En caso de necesitar la implementación del FetchAPI
+  import 'whatwg-fetch'; // <-- yarn add whatwg-fetch
