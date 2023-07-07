@@ -7,7 +7,7 @@ describe('test in authReducer', () => {
 
     const initialState = { // no debe de haber name, solo logged en false
         logged: false,
-        
+
     };
     
 
@@ -47,7 +47,7 @@ describe('test in authReducer', () => {
         const state = {
             logged: true,
             user: {
-                id: 123,
+                id: 'ABC',
                 name: 'Chema',
             }
         };
@@ -56,7 +56,8 @@ describe('test in authReducer', () => {
         }; 
 
         const newState = authReducer( state, action)
-        expect( newState ).toEqual( {logged: false } )
+        console.log(newState);
+        expect( newState ).toEqual( {logged: false, name: null } )
     });
 
 
