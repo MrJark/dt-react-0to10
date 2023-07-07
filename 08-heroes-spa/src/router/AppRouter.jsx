@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import { AboutPage, LoginPage } from '../auth'; 
 import { HeroesRoutes } from '../heroes';
-import { PrivateRouter } from './';
+import { PrivateRouter, PublicRoute } from './';
 
 // import { Marvel, DC } from '../heroes';
 
@@ -17,7 +17,22 @@ export const AppRouter = () => {
             <Routes>
 
                 {/* <Route path='about' element={<AboutPage/>}/> */}{/* por ahroa esta ruta no es util */}
-                <Route path='login' element={<LoginPage/>}/>
+
+                <Route path='login' element={
+                  <PublicRoute>
+                    <LoginPage/>
+                  </PublicRoute>
+                }/>
+                {/* forma 2 de hacer el public route */}
+                {/* <Route path='login/*' element={
+                  <PublicRoute>
+                    <Routes>
+                      <Route path='/*' element={<LoginPage/>}/>
+                    </Routes>
+                  </PublicRoute>
+                }/> */}
+
+                {/* <Route path='login' element={<LoginPage/>}/> */}
 
                 {/* Puedo eliminar estas rutas de aquí porque ya las tengo en el HeroesRoutes además, tiene más sentido que estén en el route de los heroes pero tienes que crear la ruta que te lleve al HeroesRoutes*/}
 
