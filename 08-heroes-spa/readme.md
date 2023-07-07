@@ -37,6 +37,7 @@ De esta forma ya se copian automáticamente las imágenes, y funciona nuestra ap
   "scripts: {
     ...
     "test": "jest --watchAll"
+  }
 
 4. Crear la configuración de babel babel.config.cjs
   module.exports = {
