@@ -1,0 +1,14 @@
+import { useContext } from 'react';
+import { AuthContext } from '../auth'
+import { Navigate } from 'react-router-dom';
+
+
+// que tenga un children hace que se convierta en un Higher Order Component
+export const PrivateRouter = ( { children } ) => {
+
+    const { logged } = useContext( AuthContext )
+
+    return (logged)
+        ? children
+        : <Navigate to="/login"/>
+}
