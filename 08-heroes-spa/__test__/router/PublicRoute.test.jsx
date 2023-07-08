@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { PublicRoute } from '../../src/router';
 import { AuthContext } from '../../src/auth';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
 
 describe(' test in <PublicRoute/> ', () => {
@@ -35,13 +35,25 @@ describe(' test in <PublicRoute/> ', () => {
             }
         }
 
+        // tienes que tenerlo estructurado de esta manera porque tienes dos rutas: la pública y la privada
         render(
             <AuthContext.Provider value={ contexValue }>
-                    <PublicRoute>
-                        <h1>Public Route</h1>
-                    </PublicRoute>
+                <MemoryRouter initialEntries={['/login']}>
+
+                    <Routes>
+                        <Route path='login' element= {
+                            <PublicRoute>
+                                <h1>Public Route</h1>
+                            </PublicRoute>
+                        }/>
+                        <Route path='marvel' element={<h1>Marvel</h1>}/>
+                    </Routes>
+
+                    
+                </MemoryRouter>
             </AuthContext.Provider>
         );
+        expect( screen.getByText('Marvel')).toBeTruthy()
 
     })
 

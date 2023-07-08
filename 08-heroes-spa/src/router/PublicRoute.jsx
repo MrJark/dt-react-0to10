@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { AuthContext } from '../auth';
+import { Navigate } from 'react-router-dom';
 
 
 // Tarea: hacer la public route. Esta no tiene que permitir al usuario llegar a la pagina de login si no ha pulsado al btn de logout (no conseguida)
