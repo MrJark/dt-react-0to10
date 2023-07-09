@@ -59,3 +59,24 @@ De esta forma ya se copian automáticamente las imágenes, y funciona nuestra ap
 
   // En caso de necesitar la implementación del FetchAPI
   import 'whatwg-fetch'; // <-- yarn add whatwg-fetch
+
+### Problemas con el testing 
+
+Al testear, Jest no podía reconocer los módulos de **import queryString from 'query-string';** y he tenido que configurar el **jest.config.cjs** para que los entienda de la siguiente manera:
+
+  module.exports = {
+
+    testEnvironment: "jest-environment-jsdom",
+  
+    setupFiles: ["./jest.setup.js"],
+  
+    moduleNameMapper: {
+  
+      "^animate.css$": "<rootDir>/mocks/animate.css.js",
+  
+    },
+  
+    transformIgnorePatterns: ["/node_modules/(?!query-string)/"],
+  };
+
+Con esto, se me ha arreglado los archivos css y los de string
