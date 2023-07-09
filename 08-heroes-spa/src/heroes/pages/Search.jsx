@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import queryString from 'query-string'; // tienes que desactivarlo porque no te deja pasar las pruebas pero si no estás prubando descomenta
+import queryString from 'query-string';
 
 import { useForm } from '../../hooks';
 
