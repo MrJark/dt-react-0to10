@@ -36,11 +36,13 @@ exports[` test on <Search/> should show default value with snapshot 1`] = `
       class="col-7"
     >
       <div
+        aria-label="catch-display-none-search"
         class="alert alert-secondary animate__animated animate__fadeIn"
       >
         Search a hero
       </div>
       <div
+        aria-label="catch-display-none-not-hero"
         class="alert alert-danger animate__animated animate__fadeIn"
         style="display: none;"
       >

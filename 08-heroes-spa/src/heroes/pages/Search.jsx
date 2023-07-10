@@ -81,11 +81,13 @@ export const Search = () => {
 
                     {/* 3ª forma, a través de const, showSearch y showError. Distintas lógicas, mismo resultado */}
                     <div 
+                        aria-label='catch-display-none-search'
                         className="alert alert-secondary animate__animated animate__fadeIn" 
                         style={ { display: showSearch ? '' : 'none' } }
                     >
                     Search a hero</div>
                     <div 
+                        aria-label='catch-display-none-not-hero'
                         className="alert alert-danger animate__animated animate__fadeIn" 
                         style={ { display: showError ? '' : 'none' } } 
                     >
