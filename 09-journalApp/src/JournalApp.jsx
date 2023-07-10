@@ -1,11 +1,15 @@
+import { AppRouter } from './router/AppRouter';
 
 
 
 
 export const JournalApp = () => {
-  return (
-    <>
-        <h1>Journal</h1>
-    </>
-  )
-}
+
+
+
+    return (
+       <>
+        <AppRouter/>
+       </>
+    )
+    }
