@@ -16,7 +16,9 @@ exports[` test on <Search/> should show default value with snapshot 1`] = `
         Searching
       </h4>
       <hr />
-      <form>
+      <form
+        aria-label="to-test"
+      >
         <input
           autocomplete="off"
           class="form-control"

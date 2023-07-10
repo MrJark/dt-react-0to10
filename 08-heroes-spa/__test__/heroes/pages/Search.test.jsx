@@ -1,10 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter, useNavigate } from 'react-router-dom';
 import { Search } from '../../../src/heroes/pages';
 import { AuthContext } from '../../../src/auth';
 
 
-// para la Task 2 necesitas un mockup parcial de la ruta useNavegate
+// para la Task 2 necesitas un mockup parcial de la ruta useNavegate ( esto si lo había hecho bien )
 const mockedUseNavegate = jest.fn();
 jest.mock('react-router-dom', () => ({ // mock de la ruta que necesitas
     ...jest.requireActual('react-router-dom'), // spread de todas las rutas que usas en el test
@@ -63,19 +63,43 @@ describe(' test on <Search/>', () => {
         );
         const divError = screen.getByLabelText('catch-display-none-not-hero');
         // console.log(divError.style);
-        expect( divError.style ).not.toContain('none');
+        expect( divError.style ).not.toContain('none'); // el mio
+        expect( divError.style.display ).toBe(''); // el del profesor
 
     });
 
     test('Task 2: should the navigate call a new screen (superman card) ❌ ', () => {
 
+        // render( // lo que estaba intentando y no estaba bien 🥲
+        //     <AuthContext.Provider value={'superman'}>
+        //         <MemoryRouter initialEntries={['/search?q=superman']}>
+        //             <Search/>
+        //         </MemoryRouter>
+        //     </AuthContext.Provider>
+        // );
+
+        const inputValue = 'superman'; // forma 2 de hacerlo y la cual me da una mayor flexibilidad y mejor control
+
         render(
-            <AuthContext.Provider value={'superman'}>
-                <MemoryRouter initialEntries={['/search?q=superman']}>
-                    <Search/>
-                </MemoryRouter>
-            </AuthContext.Provider>
+            <MemoryRouter initialEntries={['/search']}>
+                <Search/>
+            </MemoryRouter>
         );
+
+        const inputBtn = screen.getByRole('textbox');
+        fireEvent.change( inputBtn, { 
+            target: {
+                name: 'searchText', 
+                // value: 'superman' // forma 1 de hacerlo
+                value: inputValue
+            }
+        }) // al pulsar el botón, tiene que cambiar (.change(los valores) )
+
+        const formForm = screen.getByLabelText('to-test'); // para conseguir que la const apunte al formulario ya que aun no hay un rol que vaya al form
+        fireEvent.submit( formForm);
+
+        // expect( mockedUseNavegate ).toHaveBeenCalledWith('?q=superman'); // (Forma1 de hacerlo) es llamado con este query porque le he puesto que sea superman en el value
+        expect( mockedUseNavegate ).toHaveBeenCalledWith(`?q=${inputValue}`); // Forma 2 de hacerlo es llamado con este query porque le he puesto que sea superman en el value
 
     })
 
