@@ -13,7 +13,7 @@ export const purpleTheme = createTheme({
             dark: '#0C0116'
         },
         error: {
-            main: red.A400
+            main: '#a11315'
         },
         background: {
             darkmode: '#222222',

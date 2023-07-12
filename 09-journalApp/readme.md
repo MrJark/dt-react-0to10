@@ -11,4 +11,3 @@ A través de yarn add react-router-dom@6
 - Repositorio de mui
 
 Para saber como intalar los packages y como está estructurado, tienes que ir al[Github de mui](https://github.com/mui/material-ui/tree/master/examples/material-cra)
- 
