@@ -1,7 +1,7 @@
 // los thunks son acciones asincronas que disparan otras acciones
 // voy a usar la api de pokeapi.co <https://pokeapi.co>
 
-import { pokemonApi } from "../../../api/pokemonApi";
+import { pokemonApi } from "../../../api";
 import { loadingPokemon, setPokemon } from "./pokemonSlice"
 
 
