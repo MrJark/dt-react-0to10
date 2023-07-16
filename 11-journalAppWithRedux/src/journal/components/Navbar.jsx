@@ -1,5 +1,6 @@
 import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material"
 import { LogoutOutlined, MenuOutlined } from '@mui/icons-material';
+import { Link } from "react-router-dom";
 
 
 
@@ -34,8 +35,11 @@ export const Navbar = ({drawerWidthNav = 240}) => {
                         component='div'
                     >Journal App</Typography>
 
-                    <IconButton color="background.grey">
-                        <LogoutOutlined/>
+                    <IconButton color= "background.grey">
+                        <Link to="/auth/register">
+                            <LogoutOutlined/>
+                        </Link>
+                        
                     </IconButton>
                 </Grid>
 
