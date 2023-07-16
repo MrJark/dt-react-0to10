@@ -11,10 +11,14 @@ export const todosApi = createApi({
     endpoints: (builder) => ({
         getTodos: builder.query({
             query: () => '/todos'
-        })
+        }),
+        getTodoById: builder.query({
+            query: (todoId) => `/todos/${todoId}`
+        }),
     })
 
 });
 
-// este createApi nos crea a su vez customs Hooks, los cuales vas a tener que exportar
-export const { useGetTodosQuery } = todosApi;
+// este createApi nos crea a su vez customs Hooks, los cuales vas a tener que exportar.
+// el nombre con el que se crea lo exportado es el mismo con el que creas los endpoints
+export const { useGetTodosQuery, useGetTodoByIdQuery } = todosApi;
