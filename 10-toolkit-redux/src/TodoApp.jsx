@@ -1,19 +1,30 @@
+import { useGetTodosQuery } from "./store/api"
 
 
 
 
 export const TodoApp = () => {
 
+    const { data: todos = [], isLoading } = useGetTodosQuery();
+
 
     return (
         <>
             <h1>TODOS - RKT</h1>
             <hr />
-            <h4>is loading...</h4>
+            <h4>isLoading: { (isLoading) ? 'True' : 'False'}</h4>
 
             <pre>...</pre>
+            <ul>
+                {todos.map( todo => (
+                    <li key={todo.id}>
+                        <strong >{ todo.completed ? 'Done - ' : 'Pending - '}</strong>
+                        { todo.title }
+                    </li>
+                ))}
+            </ul>
 
-            <button>Nex Todo</button>
+            <button>Next Todo</button>
         </>
     )
 }
