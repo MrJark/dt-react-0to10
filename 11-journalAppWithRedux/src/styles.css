@@ -1,0 +1,15 @@
+:root {
+    --black: #020D0D;
+    --white: #f9f9f9;
+    --primary: #0C9A9D;
+    --socondary: #ab79dd;
+    --background-dark: #222222;
+    --background-dark-light: #404141;
+  
+}
+
+
+
+.box-shadow {
+    box-shadow: 0pc 5px 5px rgba(207, 207, 207, 0.2);
+}
