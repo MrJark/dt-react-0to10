@@ -17,3 +17,9 @@ Para saber como intalar los packages y como está estructurado, tienes que ir al
 [React Redu](https://react-redux.js.org)
 
 Instalación de reduxtoolkit -> **yarn add @reduxjs/toolkit react-redux**
+
+- **Backend**
+
+Voy a usar [Firebase](https://firebase.google.com)
+
+Y para ello también me pide instalar firebase **yarn add firebase**
