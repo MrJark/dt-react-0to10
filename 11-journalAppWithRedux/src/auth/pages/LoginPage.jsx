@@ -1,5 +1,6 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom'; // como tienes dos Link, este le pones un alias para que no haya conflicto entre ellos
+import { useMemo } from 'react';
 import { Button, Grid, Link, TextField, Typography } from '@mui/material';
 import { Google } from '@mui/icons-material';
 
@@ -11,12 +12,16 @@ import { chekingAuthentication, startGoogleSignIn } from '../../store/auth';
 
 export const LoginPage = () => {
 
+    const { status } = useSelector( state => state.auth)
+
     const dispatch = useDispatch(); // estaba bienpara la tarea 1
     // const algo = useSelector(state => state.status); // no hacia falta para la tarea 1
 
     // useEffect( () => { // no hacia falta pra la tarea1
     //     dispatch(checkingCredentials());
     // }, [])
+
+    const isAuthenticating = useMemo( () => status === 'checking', [status]);
 
     const { email, password, onInputChange} = useForm({
         email: 'mrjark@mrjark.com',
@@ -73,6 +78,7 @@ export const LoginPage = () => {
 
                         <Grid item xs={12} sm={6} mt={3}>
                             <Button 
+                                disabled= { isAuthenticating } // para hacer que se deshabilite si ya está autenticado
                                 type='submit'
                                 variant='contained'
                                 fullWidth
@@ -81,6 +87,7 @@ export const LoginPage = () => {
 
                         <Grid item xs={12} sm={6} mt={3}>
                             <Button
+                                disabled= { isAuthenticating } // para hacer que se deshabilite si ya está autenticado
                                 onClick={onGoogleSignIn}
                                 variant='contained'
                                 fullWidth>
