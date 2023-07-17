@@ -1,5 +1,6 @@
 // los thunks son acciones que puedes despachar y que tienen una tarea síncrona
 
+import { singInWithGoogle } from "../../firabase/providers";
 import { checkingCredentials } from "./authSlice"
 
 
@@ -16,5 +17,6 @@ export const chekingAuthentication = (email, password) => {
 export const startGoogleSignIn = () => {
     return async( dispatch ) => {
         dispatch(checkingCredentials() );
+        const result = await singInWithGoogle()
     }
 }
