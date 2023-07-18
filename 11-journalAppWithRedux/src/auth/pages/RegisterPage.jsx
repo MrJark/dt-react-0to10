@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useMemo, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Link as RouterLink } from 'react-router-dom'; // como tienes dos Link, este le pones un alias para que no haya conflicto entre ellos
-import { Button, Grid, Link, TextField, Typography } from '@mui/material';
+import { Alert, Button, Grid, Link, TextField, Typography } from '@mui/material';
 
 import { AuthLayout } from '../layout';
 import { useForm } from '../../hooks';
@@ -26,6 +26,9 @@ export const RegisterPage = () => {
     const dispatch = useDispatch();
 
     const [fromSubmitted, setFromSubmitted] = useState(false);
+
+    const { status, errorMessage } = useSelector( state => state.auth );
+    const isCheckingAuthentication = useMemo( () => status === 'checking', [status])
 
     // para validar los campos del form, porque no cualquier cosa vale, se crean las variables isFormValid, isDisplayNameValid, isEmailValid, isPasswordValid
     const { 
@@ -95,8 +98,15 @@ export const RegisterPage = () => {
                         spacing={2}
                         sx={{mb:2}}>
 
-                        <Grid item xs={12} sm={6} mt={3}>
+                        <Grid item xs={12}  mt={3} display={!!errorMessage ? '' : 'none'}>
+                            <Alert severity='error'>
+                                {errorMessage}
+                            </Alert>
+                        </Grid>
+
+                        <Grid item xs={12}  mt={1}>
                             <Button 
+                                disabled= { isCheckingAuthentication } // cuando esté check deshabilita el boton
                                 type='submit'
                                 variant='contained'
                                 fullWidth
