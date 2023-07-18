@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { Link as RouterLink } from 'react-router-dom'; // como tienes dos Link, este le pones un alias para que no haya conflicto entre ellos
 import { Button, Grid, Link, TextField, Typography } from '@mui/material';
 
 import { AuthLayout } from '../layout';
 import { useForm } from '../../hooks';
+import { startCreatingUserWithEmailPassword } from '../../store/auth';
 
 
 const formData = {
@@ -21,19 +23,25 @@ const formValidations = { // esto es la validación personalizada para el formul
 
 export const RegisterPage = () => {
 
-    const [fromSubmitted, setfromSubmitted] = useState(false);
+    const dispatch = useDispatch();
+
+    const [fromSubmitted, setFromSubmitted] = useState(false);
 
     // para validar los campos del form, porque no cualquier cosa vale, se crean las variables isFormValid, isDisplayNameValid, isEmailValid, isPasswordValid
     const { 
-        displayName, email, password, onInputChange,
+        formState, displayName, email, password, onInputChange,
         isFormValid, displayNameValid, emailValid, passwordValid
     } = useForm(formData, formValidations); // como segundo argumento al hook le mandas el validation ( tb se pueden usar los useMemo o con const èro de esta manera se limita el código escrito)
 
 
     const onSubmit = (e) => {
         e.preventDefault();
-        setfromSubmited(true);
-        console.log(formData);
+        setFromSubmitted(true);
+
+        if( !isFormValid ) return;
+        // console.log(formData);
+
+        dispatch( startCreatingUserWithEmailPassword(formState))
     }
 
     return (
