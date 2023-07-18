@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
+import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
 import { FirebaseAuth } from './config';
 
 const googleProvider = new GoogleAuthProvider();
@@ -38,7 +38,7 @@ export const registerUserWith = async ({email, password, displayName}) => {
 
         const res = await createUserWithEmailAndPassword(FirebaseAuth, email, password)
         const { uid, photoURL } = res.user;
-        console.log(res);
+        // console.log(res); 
 
         await updateProfile(FirebaseAuth.currentUser, { displayName }); // esta función es para actualizar el usuario en firebase(como es una promesa usa el await). Y para saber cual es el usuario actual, solo hace falta llamar a " FirebaseAuth.currentUser " y el segundo argumento es aquellos que queires actualizar. En este caso el diplayName
         
@@ -50,6 +50,26 @@ export const registerUserWith = async ({email, password, displayName}) => {
     } catch (error) {
         return{ 
             ok: false, 
+            errorMessage: error.message,
+        }
+    }
+};
+
+export const loginWithEmailPassword = async ( { email, password } ) => {
+    try {
+
+        const res = signInWithEmailAndPassword( FirebaseAuth, email, password);
+        const {  uid, photoURL, displayName } = (await res).user;
+        console.log(res);
+
+        return{
+            ok: true,
+            uid, photoURL, displayName
+        }
+
+    } catch (error) {
+        return {
+            ok: false,
             errorMessage: error.message,
         }
     }

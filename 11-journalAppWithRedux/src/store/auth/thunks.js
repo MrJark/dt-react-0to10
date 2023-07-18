@@ -1,6 +1,6 @@
 // los thunks son acciones que puedes despachar y que tienen una tarea síncrona
 
-import { singInWithGoogle, registerUserWith } from "../../firabase/providers";
+import { singInWithGoogle, registerUserWith, loginWithEmailPassword } from "../../firabase/providers";
 import { checkingCredentials, login, logout } from "./"
 
 
@@ -12,7 +12,7 @@ export const chekingAuthentication = (email, password) => {
         dispatch(checkingCredentials() ); // estsba bien
     }
 
-}
+};
 
 export const startGoogleSignIn = () => {
     return async( dispatch ) => {
@@ -33,4 +33,18 @@ export const startCreatingUserWithEmailPassword = ( { password, email, displayNa
         if (!ok ) return dispatch( logout({errorMessage}) ); // si no funciona, si el ok es false, se logout
         dispatch( login( {uid, displayName, email, photoURL } )); // y si funciona, se hace el login
     }
-}
+};
+
+// Tarea: realizar el login con el usuario y la contraseña ( cuando ya se han registrado ) ❌ no conseguida del tod. No sabía como implementarlo para que me apareciera en el login pages
+export const startLoginWithEmailPassword = ( { password, email } ) => { // no hay que enviar en ningún moemnto el displayName
+
+    return async ( dispatch ) => {
+        dispatch(  checkingCredentials() );
+
+        const result = await loginWithEmailPassword({ email, password });
+        
+        if ( !result.ok ) return dispatch( logout( result ) ); 
+        dispatch( login( result )); 
+    }
+
+};

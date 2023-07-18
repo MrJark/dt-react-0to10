@@ -1,18 +1,25 @@
 import { useDispatch, useSelector } from 'react-redux';
+
 import { Link as RouterLink } from 'react-router-dom'; // como tienes dos Link, este le pones un alias para que no haya conflicto entre ellos
-import { useMemo } from 'react';
-import { Button, Grid, Link, TextField, Typography } from '@mui/material';
+
+import { useMemo, useState } from 'react';
+
+import { Alert, Button, Grid, Link, TextField, Typography } from '@mui/material';
 import { Google } from '@mui/icons-material';
 
 import { AuthLayout } from '../layout';
-
 import { useForm } from '../../hooks';
+import { startGoogleSignIn, startLoginWithEmailPassword } from '../../store/auth';
 
-import { chekingAuthentication, startGoogleSignIn } from '../../store/auth';
+
+const forFormData = {
+    email: 'mrjark@mrjark.com',
+    password: '123abc456def',
+};
 
 export const LoginPage = () => {
 
-    const { status } = useSelector( state => state.auth)
+    const { status, errorMessage } = useSelector( state => state.auth)
 
     const dispatch = useDispatch(); // estaba bienpara la tarea 1
     // const algo = useSelector(state => state.status); // no hacia falta para la tarea 1
@@ -21,18 +28,16 @@ export const LoginPage = () => {
     //     dispatch(checkingCredentials());
     // }, [])
 
+    // const [fromSubmitted, setFromSubmitted] = useState(false); // esto no me hacía falta para la tarea del login con email y password
+
     const isAuthenticating = useMemo( () => status === 'checking', [status]);
 
-    const { email, password, onInputChange} = useForm({
-        email: 'mrjark@mrjark.com',
-        password: '1234556',
-    });
+    const { email, password, onInputChange} = useForm(forFormData);
 
-    const onSubmit = (event ) => {
-        event.preventDefault();
+    const onSubmit = (e) => {
+        e.preventDefault();
 
-        // // console.log({email, password});
-        dispatch( chekingAuthentication());
+        dispatch( startLoginWithEmailPassword( { email, password } )); // no lo había cambiado a start...
 
     };
 
@@ -70,6 +75,17 @@ export const LoginPage = () => {
                             value={password}
                             onChange={onInputChange}
                         />
+                    </Grid>
+
+
+                    <Grid  
+                        item xs={12}  
+                        mt={3} 
+                        display={!!errorMessage ? '' : 'none'}
+                    >
+                        <Alert severity='error'>
+                            {errorMessage}
+                        </Alert>
                     </Grid>
 
                     <Grid container 
