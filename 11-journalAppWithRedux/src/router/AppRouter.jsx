@@ -1,9 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
 import { AuthRoutes } from '../auth/routes';
 import { JournalRoute } from '../journal/routes';
+import { useSelector } from 'react-redux';
+import { CheckingAuth } from '../ui';
+
 
 export const AppRouter = () => {
 
+    const { status } = useSelector( state => state.auth);
+    if( status === 'checking') {
+        return <CheckingAuth/>
+    }
 
 
     return (

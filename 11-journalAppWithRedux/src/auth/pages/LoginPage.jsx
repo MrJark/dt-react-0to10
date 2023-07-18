@@ -13,8 +13,8 @@ import { startGoogleSignIn, startLoginWithEmailPassword } from '../../store/auth
 
 
 const forFormData = {
-    email: 'mrjark@mrjark.com',
-    password: '123abc456def',
+    email: '',
+    password: '',
 };
 
 export const LoginPage = () => {

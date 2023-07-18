@@ -5,10 +5,12 @@ import { red } from "@mui/material/colors"; // colores ya predeterminados del ma
 export const purpleTheme = createTheme({
     palette: {
         primary: {
+            200: '#12fcff',
             main: '#0C9A9D',
             dark: '#000707',
         },
         secondary: {
+            200: '#d1a3ff',
             main: '#AB79DD',
             400: '#6627A5',
             dark: '#0C0116'
