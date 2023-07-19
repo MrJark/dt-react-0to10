@@ -7,27 +7,30 @@ import { useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { FirebaseAuth } from '../firabase/config';
 import { login, logout } from '../store/auth';
+import { useCheckAuth } from '../hooks';
 
 
 export const AppRouter = () => {
 
-    const { status } = useSelector( state => state.auth);
+    // Vas al useCheackAuth -> custom hook
+    // const { status } = useSelector( state => state.auth);
 
-    const dispatch = useDispatch(); // hace falta el dispatch para llamar al user
+    // const dispatch = useDispatch(); // hace falta el dispatch para llamar al user
 
-    useEffect( () => { // este useEffect es para disparar 'algo' cuando el usuario esté authenticated o no
-        // Firebase te permite saber que usuario está activo -> onAuthStateChanged() el cual pide tu auth, que en este caso es FirebaseAuth
+    // useEffect( () => { // este useEffect es para disparar 'algo' cuando el usuario esté authenticated o no
+    //     // Firebase te permite saber que usuario está activo -> onAuthStateChanged() el cual pide tu auth, que en este caso es FirebaseAuth
         
-        onAuthStateChanged( FirebaseAuth, async (user) => {
-            if (!user ) return dispatch( logout() ); // si no hau user
+    //     onAuthStateChanged( FirebaseAuth, async (user) => {
+    //         if (!user ) return dispatch( logout() ); // si no hau user
 
-            const { uid, email, displayName, photoURL } = user;
-            dispatch( login( { uid, email, displayName, photoURL } ) );
-        })
+    //         const { uid, email, displayName, photoURL } = user;
+    //         dispatch( login( { uid, email, displayName, photoURL } ) );
+    //     })
 
-    }, [])
+    // }, [])
 
 
+    const { status } = useCheckAuth();
     if( status === 'checking') {
         return <CheckingAuth/>
     }
