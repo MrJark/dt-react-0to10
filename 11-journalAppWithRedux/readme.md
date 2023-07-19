@@ -23,3 +23,9 @@ Instalación de reduxtoolkit -> **yarn add @reduxjs/toolkit react-redux**
 Voy a usar [Firebase](https://firebase.google.com)
 
 Y para ello también me pide instalar firebase **yarn add firebase**
+
+Hay otros métodos de authentication que pueden ser útiles ( y algunos gratias hasta cierto punto ) como [Auth0](https://auth0.com)
+
+- Estilos
+
+He utilizado [Animate.css](https://animate.style)

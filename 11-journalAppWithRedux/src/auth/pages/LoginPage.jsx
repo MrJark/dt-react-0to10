@@ -51,7 +51,9 @@ export const LoginPage = () => {
 // material design trabaja bajo la condición "movile first" por tanto, tomará por defecto pantallas muy pequeñas. Mui trabaja con grillas de 12 elementos
     return (
         <AuthLayout title='Login'>
-            <form onSubmit={onSubmit}>
+            <form 
+            className="animate__animated animate__fadeIn animate__faster"
+            onSubmit={onSubmit}>
                 <Grid container>
                     <Grid item xs={12} sx={{mt: 2}}>
                         <TextField
