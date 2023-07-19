@@ -25,7 +25,8 @@ export const useCheckAuth = () => {
 
     }, []);
 
-    return {
+    return { // al hacerlo así, tienes que desestructurar el status del useCheackAuth
         status
-    }
+    };
+    // return status; // al hacerlo así, no hace falta que desestructures ya que es el propio estatus lo que se envia, no es un objeto del que tengas que coger algo sería así: const status = useCheckAuth();
 };

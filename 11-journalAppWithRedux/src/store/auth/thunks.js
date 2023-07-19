@@ -1,6 +1,6 @@
 // los thunks son acciones que puedes despachar y que tienen una tarea síncrona
 
-import { singInWithGoogle, registerUserWith, loginWithEmailPassword } from "../../firabase/providers";
+import { singInWithGoogle, registerUserWith, loginWithEmailPassword, logoutFirebase } from "../../firabase/providers";
 import { checkingCredentials, login, logout } from "./"
 
 
@@ -48,3 +48,11 @@ export const startLoginWithEmailPassword = ( { password, email } ) => { // no ha
     }
 
 };
+
+export const startLogout = () => {
+    return async(dispatch ) => {
+
+        await logoutFirebase();
+        dispatch( logout() ); // tienes que poner que el logout regresa un objeto vacio, sino da error
+    }
+}

@@ -73,4 +73,8 @@ export const loginWithEmailPassword = async ( { email, password } ) => {
             errorMessage: error.message,
         }
     }
-}
+};
+
+export const logoutFirebase = async() => { // función async que hay que llamar para hacer el logout
+    return await FirebaseAuth.signOut(); // esta función cierra cualquier método de auth, desde google a apple
+};

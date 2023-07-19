@@ -1,9 +1,15 @@
-import { TurnedInNot } from "@mui/icons-material"
-import { Box, Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material"
+import { TurnedInNot } from '@mui/icons-material'
+import { Box, Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
+import { useSelector } from 'react-redux';
 
 
 
 export const SideBar = ({drawerWidthNav = 240}) => {
+
+    // Tarea: traet el displayName al sideBar ✅
+    const { displayName } = useSelector( state => state.auth);
+
+
     return (
        <Box
         component='nav'
@@ -24,7 +30,7 @@ export const SideBar = ({drawerWidthNav = 240}) => {
                         noWrap
                         component='div'
                     >
-                    Chema</Typography>
+                    {displayName}</Typography>
                 </Toolbar>
                 <Divider/>
 

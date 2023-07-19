@@ -1,11 +1,18 @@
+import { useDispatch } from 'react-redux';
+
 import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material"
 import { LogoutOutlined, MenuOutlined } from '@mui/icons-material';
 import { Link } from "react-router-dom";
+import { startLogout } from '../../store/auth';
 
 
 
 export const Navbar = ({drawerWidthNav = 240}) => {
 
+    const dispatch = useDispatch();
+    const onLogOut = () => { // esta tarea no es síncrona. Hay que hacer varias dispatch antes d elogout
+        dispatch( startLogout() );
+    }
 
     return (
         <AppBar
@@ -35,9 +42,11 @@ export const Navbar = ({drawerWidthNav = 240}) => {
                         component='div'
                     >Journal App</Typography>
 
-                    <IconButton color= "background.grey">
+                    <IconButton 
+                        onClick={onLogOut}
+                    >
                         <Link to="/auth/register">
-                            <LogoutOutlined/>
+                            <LogoutOutlined sx={{color: "primary.dark"}}/>
                         </Link>
                         
                     </IconButton>
