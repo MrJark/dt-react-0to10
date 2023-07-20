@@ -1,7 +1,7 @@
 // A TENER EN CUENTA para hacer dispatch de funciones asíncronas, echas mano de los thunks, sino usas los reducers
 import { collection, doc, setDoc } from 'firebase/firestore/lite';
 import { FirebaseDB } from '../../firabase/config';
-import { addNewEmptyNote, savingNewNote, setActiveNote, setNotes } from './';
+import { addNewEmptyNote, savingNewNote, setActiveNote, setNotes, setSaving, updatedNote } from './';
 import { loadNotes } from '../../helpers';
 
 
@@ -51,5 +51,23 @@ export const startLoadingNotes = () => {
         const notes = await loadNotes(uid);
         
         dispatch( setNotes( notes ));
-    }
-}
+    };
+};
+
+export const startSaveNote = () => {
+    return async( dispatch, getState ) => {
+        dispatch( setSaving() );
+
+        // para guardar las las config de las notas necesitas necesitas saber quien es el user (traer el uid) y cual es el id de la nota mas la ruta hacia donde apunta
+        const { uid } = getState().auth; // traes el uid
+        const { active: activeNote } = getState().journal; // traes la nota activa del journal pero el activo, para no confundir, la renombras
+
+        const noteToFirestore = {...activeNote};
+        delete noteToFirestore.id; // esto elimina el id del activeNote y antes tengo que hacer el spread para poder hacerlo
+
+        const docReference = doc( FirebaseDB, `${uid}/journal/notes/${activeNote.id}`); // creando la ruta para las modificaciones de la nota
+        await setDoc( docReference, noteToFirestore, {merge: true});
+
+        dispatch( updatedNote( activeNote ) );
+    };
+};

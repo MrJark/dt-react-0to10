@@ -43,11 +43,20 @@ export const journalSlice = createSlice({
         },
 
         setSaving: ( state) => {
-            
+            state.isSaving = true;
         },
 
-        updateNote: ( state, action) => {
-            
+        updatedNote: ( state, action) => {
+            state.isSaving = false;
+            // Tarea: conseguir actializar a tiempo real en el sideBar cuando pulso el btn save al cambiar el title o el body ❌ no he sabido que tenia que poner dentro del map para recorrer el arreglo
+            state.notes = state.notes.map( note => {
+                if( note.id === action.payload.id ) {
+                    return action.payload;
+                }  // aquí se supone que el payload es un note actualizado
+                return note;
+            } );
+
+
         },
 
         deleteNoteById: ( state, action) => {
@@ -66,6 +75,6 @@ export const {
     setActiveNote,
     setNotes,
     setSaving,
-    updateNote,
+    updatedNote,
 
 } = journalSlice.actions;

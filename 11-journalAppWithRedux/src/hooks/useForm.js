@@ -8,7 +8,12 @@ export const useForm = ( initialForm = {}, formValidations = {} ) => {
 
     useEffect( () => {
         createValidators();
-    }, [formState])
+    }, [formState]);
+
+    useEffect(() => {
+        setFormState( initialForm );
+    }, [initialForm]);
+    
 
     const isFormValid = useMemo( () => {
 
@@ -17,7 +22,7 @@ export const useForm = ( initialForm = {}, formValidations = {} ) => {
         }
 
         return true;
-    }, [fromValidation])
+    }, [fromValidation]);
 
     const onInputChange = ({ target }) => {
         const { name, value } = target;
@@ -25,11 +30,11 @@ export const useForm = ( initialForm = {}, formValidations = {} ) => {
             ...formState,
             [ name ]: value
         });
-    }
+    };
 
     const onResetForm = () => {
         setFormState( initialForm );
-    }
+    };
 
     const createValidators = () => {
 
