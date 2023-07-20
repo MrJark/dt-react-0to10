@@ -1,10 +1,15 @@
 // A TENER EN CUENTA para hacer dispatch de funciones asíncronas, echas mano de los thunks, sino usas los reducers
 import { collection, doc, setDoc } from 'firebase/firestore/lite';
 import { FirebaseDB } from '../../firabase/config';
-import { addNewEmptyNote, savingNewNote, setActiveNote } from './';
+import { addNewEmptyNote, savingNewNote, setActiveNote, setNotes } from './';
+import { loadNotes } from '../../helpers';
 
 
-
+const newNote = {
+    title: '',
+    body: '',
+    date: new Date().getTime(),
+};
 
 export const startNewNote = () => {
     return async( dispatch, getState ) => { // el return de los thunks tienen dos argumentos, el segundo es una funcion que devuelve el contenido del usuario
@@ -12,11 +17,11 @@ export const startNewNote = () => {
         const { uid } = getState().auth;// sacas el uid a través del getState ya que te hace falta para la authentication del usuario y recoger las notas qe tenga o en este caso, añadir nuevas
         
         
-        const newNote = {
-            title: '',
-            body: '',
-            date: new Date().getTime(),
-        };
+        // const newNote = {
+        //     title: '',
+        //     body: '',
+        //     date: new Date().getTime(),
+        // };
         
         dispatch( savingNewNote( newNote ) );
         
@@ -35,4 +40,16 @@ export const startNewNote = () => {
         dispatch( setActiveNote( newNote ) );
         dispatch( addNewEmptyNote( newNote ) );
     };
+};
+
+export const startLoadingNotes = () => {
+    return async( dispatch, getState ) => {
+
+        const { uid } = getState().auth;
+        if ( !uid ) throw new Error (`The UID: ${uid} don't exist`); // este error nunca debería salir ya que no se debe poder acceder sin tener un uid
+
+        const notes = await loadNotes(uid);
+        
+        dispatch( setNotes( notes ));
+    }
 }

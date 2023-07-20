@@ -36,7 +36,8 @@ export const journalSlice = createSlice({
         },
 
         setNotes: ( state, action) => {
-            
+            // Tarea: llamar al setNotes con las tareas que ya tengo y aparezcan en el chat de Redux ❌ no he sabido que colocar en este sección con el state y el action
+            state.notes = action.payload // si que era esto, lo que no tenia bien era la llamada en el thunks
         },
 
         setSaving: ( state) => {
