@@ -33,6 +33,8 @@ export const journalSlice = createSlice({
 
         setActiveNote: ( state, action) => {
             state.active = action.payload; // con esto le dices que el payload es la propia nota que quieres que aparezca en pantalla
+            // Tarea: mostrar las notas en el Redux cuando se le hace click en ella ❌ he añadido el evento para escuchar el id, se que tengo que hacerlo con eso pero no se como colocarlo en esta parte
+
         },
 
         setNotes: ( state, action) => {
