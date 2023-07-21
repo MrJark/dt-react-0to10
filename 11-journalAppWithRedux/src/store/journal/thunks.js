@@ -2,7 +2,7 @@
 import { collection, doc, setDoc } from 'firebase/firestore/lite';
 import { FirebaseDB } from '../../firabase/config';
 import { addNewEmptyNote, savingNewNote, setActiveNote, setNotes, setSaving, updatedNote } from './';
-import { loadNotes } from '../../helpers';
+import { fileUpload, loadNotes } from '../../helpers';
 
 
 const newNote = {
@@ -69,5 +69,13 @@ export const startSaveNote = () => {
         await setDoc( docReference, noteToFirestore, {merge: true});
 
         dispatch( updatedNote( activeNote ) );
+    };
+};
+
+export const startUploadingFiles = ( files = [] ) => {
+    return async( dispatch, getState ) => { // getState aquí no se utiliza ya que no requieres ningún método de identificación
+        dispatch( setSaving() );
+
+        await fileUpload( files[0] );
     };
 };

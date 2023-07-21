@@ -1,14 +1,14 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { SaveOutlined } from '@mui/icons-material';
-import { Button, Grid, TextField, Typography } from '@mui/material';
+import { SaveOutlined, UploadOutlined } from '@mui/icons-material';
+import { Button, Grid, IconButton, TextField, Typography } from '@mui/material';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css'
 
 import { ImageGallery } from '../components';
 import { useForm } from '../../hooks';
-import { setActiveNote, startSaveNote, updatedNote } from '../../store/journal';
+import { setActiveNote, startSaveNote, startUploadingFiles } from '../../store/journal';
 
 
 
@@ -26,6 +26,8 @@ export const NoteView = () => {
         return newDate.toUTCString(); // para traer la fecha al formato utc
     }, [ date ]);
 
+    const fileInputRef = useRef(); // permite hacer un intercambio de funcionalidad entre elementos. En este caso lo utilizas para dar la funcionalidad del input al btn del UploadOutlined ya que el input como tal no se puede estilizar y se ve feo
+
     useEffect(() => {
       dispatch( setActiveNote(formState) );
     
@@ -42,6 +44,13 @@ export const NoteView = () => {
         dispatch( startSaveNote() ); // como tienes que hacer una grabación en el Firebase, todo aquello que haga una petición http, es a través de un thunks porque es async
     };
 
+    const onFileInputChange = ( {target} ) => {
+        if( target.file === 0 ) return;
+
+        // como la subida de archivos es async se neceesita tenerlo en los thunks
+        dispatch( startUploadingFiles( target.files ) )
+    };
+
     return (
         <Grid 
             className="animate__animated animate__fadeIn animate__faster"
@@ -55,6 +64,24 @@ export const NoteView = () => {
                 <Typography fontSize={20} fontWeight={'light'}>{ dateString }</Typography>
             </Grid>
             <Grid item>
+
+
+                <input
+                    type="file"
+                    ref={ fileInputRef }
+                    multiple
+                    onChange={onFileInputChange}
+                    style={{ display: 'none'}}
+                />
+
+                <IconButton
+                    sx= {{color: 'primary.dark'}}
+                    disabled= { isSaving }
+                    onClick={ () => fileInputRef.current.click() }
+                >
+                    <UploadOutlined/>
+                </IconButton>
+
                 <Button 
                     disabled={isSaving}
                     onClick={ onSaveNote }

@@ -30,5 +30,10 @@ Hay otros métodos de authentication que pueden ser útiles ( y algunos gratias 
 
 He utilizado [Animate.css](https://animate.style)
 
-Mensajes de alerta con [Sweetalert2](https://sweetalert2.github.io/#download)
+- Mensajes de alerta con [Sweetalert2](https://sweetalert2.github.io/#download)
+
 Lo he instalado como **yarn add sweetalert2**
+
+- Para las imágenes voy a usar [Cloudinary](https://cloudinary.com)
+
+Es recomendable usar distintos almacenajes para imagenes y texto por posibles ataques con virus y que el contenido se vea expuesto
