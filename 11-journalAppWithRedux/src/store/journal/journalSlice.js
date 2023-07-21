@@ -6,7 +6,7 @@ export const journalSlice = createSlice({
    name: 'journal',
    initialState: {
        isSaving: false,
-       massageSaved: '',
+       messageSaved: '',
        notes: [],
        active: null,
        // forma en la cual se va a estructurar una nota
@@ -34,7 +34,7 @@ export const journalSlice = createSlice({
         setActiveNote: ( state, action) => {
             state.active = action.payload; // con esto le dices que el payload es la propia nota que quieres que aparezca en pantalla
             // Tarea: mostrar las notas en el Redux cuando se le hace click en ella ❌ he añadido el evento para escuchar el id, se que tengo que hacerlo con eso pero no se como colocarlo en esta parte
-
+            state.messageSaved = '';
         },
 
         setNotes: ( state, action) => {
@@ -42,8 +42,9 @@ export const journalSlice = createSlice({
             state.notes = action.payload // si que era esto, lo que no tenia bien era la llamada en el thunks
         },
 
-        setSaving: ( state) => {
+        setSaving: ( state ) => {
             state.isSaving = true;
+            state.messageSaved = '';
         },
 
         updatedNote: ( state, action) => {
@@ -55,7 +56,7 @@ export const journalSlice = createSlice({
                 }  // aquí se supone que el payload es un note actualizado
                 return note;
             } );
-
+            state.messageSaved = `Updated`; // podrías querer disparar el código del sweetalert aquí pero recuerda, los reducces no pueden tener otras dependencias y tienen que ser lo mas simples posibles
 
         },
 

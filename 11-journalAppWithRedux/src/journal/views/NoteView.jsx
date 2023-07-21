@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { SaveOutlined } from '@mui/icons-material';
 import { Button, Grid, TextField, Typography } from '@mui/material';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css'
 
 import { ImageGallery } from '../components';
 import { useForm } from '../../hooks';
@@ -14,7 +16,7 @@ import { setActiveNote, startSaveNote, updatedNote } from '../../store/journal';
 export const NoteView = () => {
     const dispatch = useDispatch();
 
-    const { active: noteActive } = useSelector(state => state.journal); // quieres obtener el active, quee es el note que has seleccionado pero para que sea más sencillo, la renombro como noteActive
+    const { active: noteActive, messageSaved, isSaving } = useSelector(state => state.journal); // quieres obtener el active, quee es el note que has seleccionado pero para que sea más sencillo, la renombro como noteActive
     const { body, date, title, onInputChange, formState } = useForm(noteActive); // con esto manejas el formulario de la nota y traes aquello que te haga falta
 
     // para colocar la fecha, usas un useMemo porque la fecha como tal no cambia, pero el formulario si lo puede hacer y necesitas memo(rizar) la fecha 😂🤘🏽
@@ -29,9 +31,16 @@ export const NoteView = () => {
     
     }, [formState]);
     
+    useEffect(() => { // para el sweetalert cada vez que cambia el mensaje y la dependencia será el propio mensaje, si cambia, se dispara
+      if (messageSaved.length > 0 ) {
+        Swal.fire('Updated note', messageSaved, 'success')
+      };
+    }, [messageSaved]);
+    
+
     const onSaveNote = () => { // 
         dispatch( startSaveNote() ); // como tienes que hacer una grabación en el Firebase, todo aquello que haga una petición http, es a través de un thunks porque es async
-    }
+    };
 
     return (
         <Grid 
@@ -47,6 +56,7 @@ export const NoteView = () => {
             </Grid>
             <Grid item>
                 <Button 
+                    disabled={isSaving}
                     onClick={ onSaveNote }
                     sx={{color: 'primary.dark', padding: 2}}>
                     <SaveOutlined sx={{ fontSize: 30, mr: 1 }}/>

@@ -29,3 +29,6 @@ Hay otros métodos de authentication que pueden ser útiles ( y algunos gratias 
 - Estilos
 
 He utilizado [Animate.css](https://animate.style)
+
+Mensajes de alerta con [Sweetalert2](https://sweetalert2.github.io/#download)
+Lo he instalado como **yarn add sweetalert2**
