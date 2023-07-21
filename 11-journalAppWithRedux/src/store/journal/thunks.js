@@ -1,7 +1,7 @@
 // A TENER EN CUENTA para hacer dispatch de funciones asíncronas, echas mano de los thunks, sino usas los reducers
 import { collection, doc, setDoc } from 'firebase/firestore/lite';
 import { FirebaseDB } from '../../firabase/config';
-import { addNewEmptyNote, savingNewNote, setActiveNote, setNotes, setSaving, updatedNote } from './';
+import { addNewEmptyNote, savingNewNote, setActiveNote, setNotes, setPhotosToActiveNotes, setSaving, updatedNote } from './';
 import { fileUpload, loadNotes } from '../../helpers';
 
 
@@ -76,6 +76,17 @@ export const startUploadingFiles = ( files = [] ) => {
     return async( dispatch, getState ) => { // getState aquí no se utiliza ya que no requieres ningún método de identificación
         dispatch( setSaving() );
 
-        await fileUpload( files[0] );
+        // await fileUpload( files[0] ); // el problema de esra línea es que solo es válida para el primer elemento 
+        // files.forEach( async(file) => { // el problema del ciclo for es que va de uno en uno
+        //     await filesUpload(file);
+        // }); 
+        const fileUploadPromises = []; // prar disparar varias promesas a la vez
+        for (const file of files) {
+            fileUploadPromises.push( fileUpload(file)) // creación del arreglo de promesas con todas ellas
+        };
+
+        const photosUrls = await Promise.all(fileUploadPromises); // esto es lo que te crea la resolución de todas las promesas ( Promise.all() ) n el mismo orden que se mandaron
+        
+        dispatch( setPhotosToActiveNotes(photosUrls) );
     };
 };

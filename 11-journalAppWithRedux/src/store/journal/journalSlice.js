@@ -15,7 +15,7 @@ export const journalSlice = createSlice({
     //     title: '',
     //     body: '',
     //     date: '',
-    //     imageURL: [],
+    //     imageURLs: [],
     //    }
     },
    reducers: { // lo que se coloca en el reducer debe ser trabajo síncrono
@@ -60,6 +60,11 @@ export const journalSlice = createSlice({
 
         },
 
+        setPhotosToActiveNotes: (state, action ) => {
+            state.active.imageURL = [ ...state.active.imageURL, ...action.payload ]; // el spread en el primer casp es para mantener las photos anteriores y el spread del payload es para añadir la nueva
+            state.isSaving = false;
+        },
+
         deleteNoteById: ( state, action) => {
             
         },
@@ -75,6 +80,7 @@ export const {
     savingNewNote,
     setActiveNote,
     setNotes,
+    setPhotosToActiveNotes,
     setSaving,
     updatedNote,
 

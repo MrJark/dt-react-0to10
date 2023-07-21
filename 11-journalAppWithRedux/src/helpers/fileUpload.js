@@ -23,7 +23,7 @@ export const fileUpload = async( file ) => { // depende de los archivos que suba
         if( !res.ok ) throw new Error('Failed Uploaded'); // si s emuestra este error es porque el archivo no se ha podido subir, al contrario que el catch, que puede ser otro tipo de error como de servidores, etc.
         
         const cloudRes = await res.json();
-        console.log({cloudRes});
+        // console.log({cloudRes});
 
         return cloudRes.secure_url; // dentro de la url, cuando subes una imagen, hay varios archivos, quieres el secure_url que es la url de la imagen
 
