@@ -1,6 +1,7 @@
 // los thunks son acciones que puedes despachar y que tienen una tarea síncrona
 
 import { singInWithGoogle, registerUserWith, loginWithEmailPassword, logoutFirebase } from "../../firabase/providers";
+import { clearNotesLogout } from "../journal";
 import { checkingCredentials, login, logout } from "./"
 
 
@@ -45,7 +46,7 @@ export const startLoginWithEmailPassword = ( { password, email } ) => { // no ha
         
         if ( !result.ok ) return dispatch( logout( result ) ); 
         dispatch( login( result )); 
-    }
+    };
 
 };
 
@@ -53,6 +54,8 @@ export const startLogout = () => {
     return async(dispatch ) => {
 
         await logoutFirebase();
-        dispatch( logout() ); // tienes que poner que el logout regresa un objeto vacio, sino da error
-    }
-}
+
+        dispatch( clearNotesLogout() );// para barrar las notas ( y todo ) cuando se hace logout
+        dispatch( logout() ); // tienes que poner que el logout regresa un objeto vacio sino, da error
+    };
+};

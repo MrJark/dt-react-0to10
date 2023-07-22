@@ -65,6 +65,14 @@ export const journalSlice = createSlice({
             state.isSaving = false;
         },
 
+        clearNotesLogout: ( state ) => { // para eliminar el contenido de las notas cuando se logout y cmo es síncrona, no hace peticiones, simplemente es borrar, se puede hacer en el slice y no en el thunk
+            state.isSaving = false;
+            state.messageSaved = '',
+            state.notes = [];
+            state.active = null;
+            // es decir, vuelve al estado inicial, sin nada
+        },
+
         deleteNoteById: ( state, action) => {
             
         },
@@ -76,6 +84,7 @@ export const journalSlice = createSlice({
 export const { 
 
     addNewEmptyNote,
+    clearNotesLogout,
     deleteNoteById,
     savingNewNote,
     setActiveNote,
