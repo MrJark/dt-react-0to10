@@ -74,7 +74,15 @@ export const journalSlice = createSlice({
         },
 
         deleteNoteById: ( state, action) => {
-            
+            state.active = null; // bien
+            // state.active = action.payload; // no
+            state.notes = state.notes.filter( note => note.id !== action.payload ); // gracias a redux-toolkit cono solo esta linea es sificiente
+            //si no trabajas con toolkit, tendrías que hacer lo siguiente:
+            // return {
+            //     ...state,
+            //     active: null,
+            //     notes: state.notes.filter( note => note.id !== action.payload ),
+            // }
         },
 
     },

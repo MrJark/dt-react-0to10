@@ -1,7 +1,7 @@
 // A TENER EN CUENTA para hacer dispatch de funciones asíncronas, echas mano de los thunks, sino usas los reducers
-import { collection, doc, setDoc } from 'firebase/firestore/lite';
+import { collection, deleteDoc, doc, setDoc } from 'firebase/firestore/lite';
 import { FirebaseDB } from '../../firabase/config';
-import { addNewEmptyNote, savingNewNote, setActiveNote, setNotes, setPhotosToActiveNotes, setSaving, updatedNote } from './';
+import { addNewEmptyNote, deleteNoteById, savingNewNote, setActiveNote, setNotes, setPhotosToActiveNotes, setSaving, updatedNote } from './';
 import { fileUpload, loadNotes } from '../../helpers';
 
 
@@ -73,7 +73,7 @@ export const startSaveNote = () => {
 };
 
 export const startUploadingFiles = ( files = [] ) => {
-    return async( dispatch, getState ) => { // getState aquí no se utiliza ya que no requieres ningún método de identificación
+    return async( dispatch ) => { // getState aquí no se utiliza ya que no requieres ningún método de identificación
         dispatch( setSaving() );
 
         // await fileUpload( files[0] ); // el problema de esra línea es que solo es válida para el primer elemento 
@@ -88,5 +88,23 @@ export const startUploadingFiles = ( files = [] ) => {
         const photosUrls = await Promise.all(fileUploadPromises); // esto es lo que te crea la resolución de todas las promesas ( Promise.all() ) n el mismo orden que se mandaron
         
         dispatch( setPhotosToActiveNotes(photosUrls) );
+    };
+};
+
+export const startDeletingNote = () => {
+    return async( dispatch, getState ) => { // asquí si hace falta el getState porque se necesita el uid del user y el id del note
+
+        const { uid } = getState().auth; // consigues el uid del user
+        const { active:activeNote } = getState().journal; // consigues la nota activa que dentro de esta está el id de la misma
+
+        // console.log({uid, activeNote});
+
+        const docRef = doc( FirebaseDB, `${ uid }/journal/notes/${activeNote.id}`); // ruta hacia la nota concreta
+        await deleteDoc(docRef); // eliminación de la ruta y por tanto de la nota a través de deleteDoc que es específico de Firebase
+
+        dispatch( deleteNoteById( activeNote.id )); // para eliminar la nota por completo
+        // Tarea: creart la funcionalidad en journalSlice para eliminar la nota ( deleteNoteById )❌ lka he eliminado solo de firebase pero lo demás o he sabido hacerlo ( al hacer el reload del browser si sale pero debería hacerse por completo)
+
+        
     };
 };

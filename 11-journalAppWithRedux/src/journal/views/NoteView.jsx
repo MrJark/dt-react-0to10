@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { SaveOutlined, UploadOutlined } from '@mui/icons-material';
+import { DeleteOutline, SaveOutlined, UploadOutlined } from '@mui/icons-material';
 import { Button, Grid, IconButton, TextField, Typography } from '@mui/material';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css'
 
 import { ImageGallery } from '../components';
 import { useForm } from '../../hooks';
-import { setActiveNote, startSaveNote, startUploadingFiles } from '../../store/journal';
+import { setActiveNote, startDeletingNote, startSaveNote, startUploadingFiles } from '../../store/journal';
 
 
 
@@ -51,6 +51,10 @@ export const NoteView = () => {
         dispatch( startUploadingFiles( target.files ) )
     };
 
+    const onDelete = () => {
+        dispatch( startDeletingNote() ); // esto tiene que ser async ( porque hace la petición para borrar ) por tanto, se crea en thunks
+    };
+
     return (
         <Grid 
             className="animate__animated animate__fadeIn animate__faster"
@@ -60,9 +64,6 @@ export const NoteView = () => {
             alignItems='center'
             sx={{mb: 1}}
         >
-            <Grid item>
-                <Typography fontSize={20} fontWeight={'light'}>{ dateString }</Typography>
-            </Grid>
             <Grid item>
 
 
@@ -88,6 +89,22 @@ export const NoteView = () => {
                     sx={{color: 'primary.dark', padding: 2}}>
                     <SaveOutlined sx={{ fontSize: 30, mr: 1 }}/>
                 Save</Button>
+
+                
+            </Grid>
+            <Grid item
+                display='flex'
+                alignItems='center'
+            >
+                <Typography fontSize={20} fontWeight={'light'}>{ dateString }</Typography>
+
+                <Button
+                    onClick={ onDelete }
+                    sx={{ ml: 2, color: 'error.main'}}
+                >
+                    <DeleteOutline/>
+                    Delete
+                </Button>
             </Grid>
 
             <Grid container>
