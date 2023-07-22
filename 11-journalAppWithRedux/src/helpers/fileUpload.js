@@ -4,7 +4,8 @@
 
 export const fileUpload = async( file ) => { // depende de los archivos que subas
     // los datos siguientes son los que he tenido que poner en Postman y con los cuales me funciona para hacer el upload de los files
-    if(!file) throw new Error('File Required');
+    // if(!file) throw new Error('File Required');
+    if(!file) return null;
 
     const cloudUrl = 'https://api.cloudinary.com/v1_1/react-journal/upload';
 
@@ -28,7 +29,8 @@ export const fileUpload = async( file ) => { // depende de los archivos que suba
         return cloudRes.secure_url; // dentro de la url, cuando subes una imagen, hay varios archivos, quieres el secure_url que es la url de la imagen
 
     } catch (error) {
-        console.log(error);
-        throw new Error( error.message )
+        // console.log(error);
+        // throw new Error( error.message )
+        return null;
     }
 };
