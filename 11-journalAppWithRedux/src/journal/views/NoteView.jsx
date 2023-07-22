@@ -116,7 +116,9 @@ export const NoteView = () => {
                 />
             </Grid>
 
-            <ImageGallery/>
+            <ImageGallery
+                images={ noteActive.imageURL }
+            />
 
         </Grid>
     )

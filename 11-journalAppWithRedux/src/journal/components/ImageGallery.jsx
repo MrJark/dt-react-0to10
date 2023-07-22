@@ -11,7 +11,7 @@ function srcset(image, width, height, rows = 1, cols = 1) {
   };
 }
 
-export const ImageGallery = () => {
+export const ImageGallery = ({ images }) => { // desesturcturas de las props las images que le mandas desde el noteview
 
     return (
         <ImageList
@@ -24,15 +24,15 @@ export const ImageGallery = () => {
         rowHeight={200}
         gap={1}
         >
-        {itemData.map((item) => {
-            const cols = item.featured ? 2 : 1;
-            const rows = item.featured ? 2 : 1;
+        { images.map((image) => { // cambio el itemData por las images
+            const cols = image.featured ? 2 : 1;
+            const rows = image.featured ? 2 : 1;
 
             return (
-            <ImageListItem key={item.img} cols={cols} rows={rows}>
+            <ImageListItem key={image} cols={cols} rows={rows}>
                 <img
-                {...srcset(item.img, 250, 200, rows, cols)}
-                alt={item.title}
+                {...srcset(image, 250, 200, rows, cols)}
+                alt='Image note'
                 loading="lazy"
                 />
                 <ImageListItemBar
@@ -41,12 +41,12 @@ export const ImageGallery = () => {
                     'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
                     'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
                 }}
-                title={item.title}
+                title={image.title}
                 position="top"
                 actionIcon={
                     <IconButton
                     sx={{ color: 'white' }}
-                    aria-label={`star ${item.title}`}
+                    aria-label={`star ${image}`}
                     >
                     <StarBorderOutlined/>
                     </IconButton>
