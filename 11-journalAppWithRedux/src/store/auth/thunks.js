@@ -10,7 +10,7 @@ export const chekingAuthentication = (email, password) => {
     return async( dispatch ) => {
         // tarea1: cuando toco el btn login debe cambiar el status en el redux de not-authenticated por el checking ❌ no conseguida, me he quedado con el error de que el state me da undefined por tanto, no puedo desestructurar la propiedad status
 
-        dispatch(checkingCredentials() ); // estsba bien
+        dispatch(checkingCredentials() ); // estsba bien. Se llama para cambiar al estado checking, es lo único que hace esta función
     }
 
 };
@@ -30,8 +30,10 @@ export const startCreatingUserWithEmailPassword = ( { password, email, displayNa
         dispatch(  checkingCredentials() );
 
         const { ok, uid, photoURL, errorMessage } = await registerUserWith({ email, password, displayName});
+        // const result = await registerUserWith({ email, password, displayName});
         
         if (!ok ) return dispatch( logout({errorMessage}) ); // si no funciona, si el ok es false, se logout
+        // if (!result.ok ) return dispatch( logout({errorMessage}) ); // si no funciona, si el ok es false, se logout
         dispatch( login( {uid, displayName, email, photoURL } )); // y si funciona, se hace el login
     }
 };
