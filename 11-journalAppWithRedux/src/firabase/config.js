@@ -21,13 +21,13 @@ import { getFirestore } from 'firebase/firestore/lite';
 
 // Testing DB
 const firebaseConfig = {
-  apiKey: "AIzaSyDFlNuMkVwddsCABO2e-wM2_VuN7G4XrdE",
-  authDomain: "testing-projects-mrjark.firebaseapp.com",
-  projectId: "testing-projects-mrjark",
-  storageBucket: "testing-projects-mrjark.appspot.com",
-  messagingSenderId: "700624061658",
-  appId: "1:700624061658:web:7c156174abf479b78051e3",
-  measurementId: "G-RCJBNP0YCM"
+  apiKey: "AIzaSyCCkd9syVSQehcKNOWEHMxWcRiP7MMSXH0",
+  authDomain: "dt-react-course.firebaseapp.com",
+  projectId: "dt-react-course",
+  storageBucket: "dt-react-course.appspot.com",
+  messagingSenderId: "562896946019",
+  appId: "1:562896946019:web:044811b73b56c462088956",
+  measurementId: "G-RP41MTL480"
 };
 
 // Initialize Firebase

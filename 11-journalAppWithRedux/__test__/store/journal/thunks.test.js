@@ -1,5 +1,5 @@
-import { startNewNote } from '../../../src/store/journal';
-
+import { addNewEmptyNote, savingNewNote, setActiveNote } from '../../../src/store/journal';
+import {startNewNote} from '../../../src/store/journal/thunks';
 
 describe(' test in thunks in journal', () => {
 
@@ -17,6 +17,9 @@ describe(' test in thunks in journal', () => {
         await startNewNote()(dispatch, getState); // estos son los segundos argumentos (los que están en el return) que recibe el startNewNote
         // esta prueba da error porque a la hora del auth te pide autenticarte y aquí no lo estás haciendo por tanto, el test por 'culpa'de firebase te da error
         // he tenido que crear una nueva app para poder hacer el checking del usuario con la nueva nota pero queda borrar dicha nota de manera automática al igual que se ha creado
+    
+        espect( dispatch ).toHaveBeenCalledWith( savingNewNote() );
+        
     });
 
 });
