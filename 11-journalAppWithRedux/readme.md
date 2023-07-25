@@ -38,7 +38,7 @@ Lo he instalado como **yarn add sweetalert2**
 
 Es recomendable usar distintos almacenajes para imagenes y texto por posibles ataques con virus y que el contenido se vea expuesto
 
-- Para el testing:
+## Para el testing:
 
   1. Instalaciones:
     yarn add --dev jest babel-jest @babel/preset-env @babel/preset-react 
@@ -70,3 +70,13 @@ Es recomendable usar distintos almacenajes para imagenes y texto por posibles at
       jest.setup.js
       // En caso de necesitar la implementación del FetchAPI
       import 'whatwg-fetch'; // <-- yarn add whatwg-fetch
+
+## Variables de entorno
+
+Se neceitan tener un archivo para manejalas que sea **.env** y no es recomendable tener 2 variables de entorno pero en este caso, como tenemso dos entornos, el de desarrollo y el de build, vamos a hacerlo.
+
+Siempre van a ser string y no números por tanto, no hacen falta las '' y para trabajar con variables de entorno, se recomienda crear un nuevo archivo, en mi caso, **getEnvironments.js**
+
+En VITE solo funcionan aquellas que empiecen por 'VITE' y siempre capitalizado y en snake_case
+
+Además, he intalado el dotenv -> **yarn add -D dotenv** y algunas modificaciones en el **jset.setup.js**
