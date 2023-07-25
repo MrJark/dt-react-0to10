@@ -42,7 +42,7 @@ export const LoginPage = () => {
     };
 
     const onGoogleSignIn = () => {
-        // console.log('bum');
+        // console.log('bum'); // para saber si el test pasa
         dispatch( startGoogleSignIn());
     };
 
@@ -52,6 +52,7 @@ export const LoginPage = () => {
     return (
         <AuthLayout title='Login'>
             <form 
+            aria-label='submitForm'
             className="animate__animated animate__fadeIn animate__faster"
             onSubmit={onSubmit}>
                 <Grid container>
@@ -76,6 +77,9 @@ export const LoginPage = () => {
                             name='password'
                             value={password}
                             onChange={onInputChange}
+                            inputProps={{ // para que funcione la prueba del fireEvent
+                                'data-testid': 'Password'
+                            }}
                         />
                     </Grid>
 
@@ -105,6 +109,7 @@ export const LoginPage = () => {
 
                         <Grid item xs={12} sm={6} mt={3}>
                             <Button
+                                aria-label='google-btn' // para los test
                                 disabled= { isAuthenticating } // para hacer que se deshabilite si ya está autenticado
                                 onClick={onGoogleSignIn}
                                 variant='contained'
