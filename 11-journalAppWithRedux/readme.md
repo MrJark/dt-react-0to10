@@ -80,3 +80,5 @@ Siempre van a ser string y no números por tanto, no hacen falta las '' y para t
 En VITE solo funcionan aquellas que empiecen por 'VITE' y siempre capitalizado y en snake_case
 
 Además, he intalado el dotenv -> **yarn add -D dotenv** y algunas modificaciones en el **jset.setup.js**
+
+Como buena práctica, se crea un **.env.template** para dejar que variables son necesarias pra que otras personas puedan tener sus credenciales 
