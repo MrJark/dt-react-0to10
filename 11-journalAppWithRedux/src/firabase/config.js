@@ -43,7 +43,7 @@ const firebaseConfig = {
   appId: VITE_APPID ,
   measurementId: VITE_MEASUREMENTID
 };
-console.log(firebaseConfig);
+// console.log(firebaseConfig);
 
 // Initialize Firebase
 
