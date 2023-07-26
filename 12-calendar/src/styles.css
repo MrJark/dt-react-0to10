@@ -1,0 +1,31 @@
+:root {
+    --letter-black: #020D0D;
+    --letter-white: #f9f9f9;
+    --primary: #0C9A9D;
+    --primary-100: #96DEDF;
+    --socondary: #ab79dd;
+    --background-dark: #222222;
+    --background-dark-light: #404141;
+    --background-light: #ECF5F5;
+    --background-light-dark: #A6ADAD;
+    --erros: #D34F4F;
+
+  
+}
+body {
+    background-color: var(--background-dark);
+    font-family: 'Ubuntu', Verdana, Tahoma, sans-serif
+}
+
+/* Navbar */
+.color-navbar {
+    background-color: var(--background-light);
+}
+.btn-color-sign-out {
+    color: var(--erros);
+    border: solid 1px var(--erros);
+}
+.btn-color-sign-out:hover {
+    background-color: var(--erros);
+    color: var(--letter-white);
+}
