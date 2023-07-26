@@ -1,23 +1,12 @@
-import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
+import { Calendar } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 
-import { addHours, parse, startOfWeek, format, getDay } from 'date-fns';
-import enUS from 'date-fns/locale/en-US';
+import { addHours } from 'date-fns';
+import { CalendarBoxEvent, Navbar } from '../components';
 
-import { Navbar } from "../components"
+import { getChangeIcons, localizer } from '../../helpers';
 
-const locales = {
-    'en-US': enUS,
-}
-
-const localizer = dateFnsLocalizer({
-    format,
-    parse,
-    startOfWeek,
-    getDay,
-    locales,
-});
 
 const events = [{
     title: 'Cris Birthday',
@@ -31,6 +20,21 @@ const events = [{
 }]
 
 export const CalendarPage = () => {
+
+    const eventStyleGetter = ( event, start, end, isSelected ) => {
+        // console.log({event, start, end, isSelected});
+
+        // estilos para las notas en el calendario
+        const style = {
+            backgroundColor: '#96DEDF',
+            color: '#020D0D',
+            boderRadius: 'none',   
+        }
+        return {
+            style
+        }
+    }
+
     return (
        <>
         <Navbar/>
@@ -40,7 +44,15 @@ export const CalendarPage = () => {
             events={events}
             startAccessor="start"
             endAccessor="end"
-            style={{ height: 'calc(100vh - 80px)' }}
+            messages={ getChangeIcons() }
+            eventPropGetter={ eventStyleGetter }
+            components={{
+                event: CalendarBoxEvent
+            }}
+            style={{ 
+                height: 'calc(100vh - 80px)', 
+                background: '#F1FAFA' 
+            }}
         />
 
        </>
