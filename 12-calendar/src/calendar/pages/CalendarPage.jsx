@@ -6,6 +6,7 @@ import { addHours } from 'date-fns';
 import { CalendarBoxEvent, Navbar } from '../components';
 
 import { getChangeIcons, localizer } from '../../helpers';
+import { useState } from 'react';
 
 
 const events = [{
@@ -21,6 +22,8 @@ const events = [{
 
 export const CalendarPage = () => {
 
+    const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week')
+
     const eventStyleGetter = ( event, start, end, isSelected ) => {
         // console.log({event, start, end, isSelected});
 
@@ -33,6 +36,18 @@ export const CalendarPage = () => {
         return {
             style
         }
+    };
+
+    const onDobleClick = ( event ) => {
+        
+    }
+    const onOneClick = ( event ) => {
+        
+    }
+    const onViewChange = ( event ) => {
+        // para almacenar en el LocalStorage la última vista del usuario y necesitas el useState y el defaultView del Calendar
+        localStorage.setItem('lastView', event );
+        setLastView( event );
     }
 
     return (
@@ -49,6 +64,10 @@ export const CalendarPage = () => {
             components={{
                 event: CalendarBoxEvent
             }}
+            onDoubleClickEvent={ onDobleClick }
+            onSelectEvent={ onOneClick }
+            onView={ onViewChange }
+            defaultView={ lastView }
             style={{ 
                 height: 'calc(100vh - 80px)', 
                 background: '#F1FAFA' 
