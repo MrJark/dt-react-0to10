@@ -25,6 +25,10 @@ En este proyecto va a ser un Calendario hecho con MERN el cual tendrá un Backen
 
 - [Paquete de npm para el calendario](https://www.npmjs.com/package/react-big-calendar) y para instalarlo es **yarn add react-big-calendar**. Además, voy a estar usando la parte de **date-fns v2** OJO
 
+- [Paquete de npm para el Modal en React](https://www.npmjs.com/package/react-modal) y su instalación es mediante **yarn add react-modal**
+
+- [Paquete de npm para el Date](https://www.npmjs.com/package/react-datepicker) y su instalación es mediante **yarn add react-datepicker**
+
 Dentro de este, también tiene unas dependencias que necesitas instalar:
   
   **yarn add date-fns**

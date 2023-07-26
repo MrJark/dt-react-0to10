@@ -6,7 +6,7 @@
     --socondary: #ab79dd;
     --background-dark: #222222;
     --background-dark-light: #404141;
-    --background-light: #ECF5F5;
+    --background-light: #f9ffff;
     --background-light-dark: #A6ADAD;
     --erros: #D34F4F;
 
@@ -28,4 +28,55 @@ body {
 .btn-color-sign-out:hover {
     background-color: var(--erros);
     color: var(--letter-white);
+}
+
+/* Calendar Modal */
+/* Modal */
+.ReactModalPortal > div{
+    opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    transition: opacity .2s ease-in-out;
+    z-index: 999;
+}
+
+.modal-fondo {
+    background-color: rgba(0, 0, 0, 0.8);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    position: fixed;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+    opacity: 0;
+}
+
+.modal {
+    background: var(--background-dark);
+    border-radius: 8px;
+    color: var(--letter-white);
+    display: inline;
+    max-height: 620px;
+    max-width: 500px;
+    outline: none;
+    padding: 10px;
+}
+.btn-submit-color {
+    color: var(--primary);
+    border: solid 1px var(--primary);
+}
+.btn-submit-color:hover {
+    background-color: var(--primary);
+    color: var(--letter-black);
+    font-size: medium;
 }

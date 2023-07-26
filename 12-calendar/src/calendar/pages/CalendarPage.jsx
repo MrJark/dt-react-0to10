@@ -3,7 +3,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 
 import { addHours } from 'date-fns';
-import { CalendarBoxEvent, Navbar } from '../components';
+import { CalendarBoxEvent, CalendarModal, Navbar } from '../components';
 
 import { getChangeIcons, localizer } from '../../helpers';
 import { useState } from 'react';
@@ -70,9 +70,11 @@ export const CalendarPage = () => {
             defaultView={ lastView }
             style={{ 
                 height: 'calc(100vh - 80px)', 
-                background: '#F1FAFA' 
+                background: '#Fff' 
             }}
         />
+
+        <CalendarModal/>
 
        </>
     )
