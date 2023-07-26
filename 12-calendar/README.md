@@ -22,3 +22,9 @@ En este proyecto va a ser un Calendario hecho con MERN el cual tendrá un Backen
 - [Pagina de LoginPage CSS y JSX](https://gist.github.com/Klerith/74a0c4426599f3bc25b7f4e8d95b6a7f)
 
 - Pagina para los cdn: [cdn awesome](https://cdnjs.com/libraries/font-awesome)
+
+- [Paquete de npm para el calendario](https://www.npmjs.com/package/react-big-calendar) y para instalarlo es **yarn add react-big-calendar**. Además, voy a estar usando la parte de **date-fns v2** OJO
+
+Dentro de este, también tiene unas dependencias que necesitas instalar:
+  
+  **yarn add date-fns**
