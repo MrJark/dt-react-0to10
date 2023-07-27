@@ -32,3 +32,7 @@ En este proyecto va a ser un Calendario hecho con MERN el cual tendrá un Backen
 Dentro de este, también tiene unas dependencias que necesitas instalar:
   
   **yarn add date-fns**
+
+- [Sweetalert2](https://sweetalert2.github.io). Es para mostrar alertas de una manera más estética. Intalación: **yarn add sweetalert2**
+
+- [Redux Toolkit](https://redux-toolkit.js.org). Voy a usar reduc para tener un store global. Intalación: **yarn add @reduxjs/toolkit react-redux**

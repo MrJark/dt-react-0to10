@@ -1,9 +1,17 @@
-import { addHours } from 'date-fns';
+import { useState, useMemo } from 'react';
+import { addHours, differenceInSeconds } from 'date-fns';
+
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
+import Modal from 'react-modal';
+import DatePicker from 'react-datepicker';
+
+
+
+
 import 'react-datepicker/dist/react-datepicker.css';
 
-import DatePicker from 'react-datepicker';
-import { useState } from 'react';
-import Modal from 'react-modal';
 
 
 
@@ -22,13 +30,24 @@ Modal.setAppElement('#root');
 export const CalendarModal = () => {
 
     const [isOpenModal, setIsOpenModal] = useState(true);
+    const [formSubmitted, setFormSubmitted] = useState(false);
 
     const [fromValue, setFromValue] = useState({
-        title: 'Chema',
-        notes: 'Too many',
+        title: '',
+        notes: '',
         start: new Date(),
         end: addHours( new Date(), 2),
     });
+    
+    const titleClass = useMemo(() => {
+
+        if( !formSubmitted ) return '';
+
+        return ( fromValue.title.length > 0 )
+            ? 'is-valid'
+            : 'is-invalid'
+
+    }, [fromValue.title, formSubmitted] )
 
     const onInputChange = ( { target } ) => { // se hace para poder cambiar los valores del form
         setFromValue( {
@@ -47,6 +66,21 @@ export const CalendarModal = () => {
     const onCloseModal = ( ) => {
         // console.log('close');
         setIsOpenModal( false );
+        setFormSubmitted(true)
+    }
+
+    const onSubmitBtn = (e) => {
+        e.preventDefault();
+        setFormSubmitted(true);
+        
+        // fecha final > fecha inicial
+        const difference = differenceInSeconds( fromValue.end, fromValue.start);
+        
+        if( isNaN( difference ) || difference <= 0 ){
+            Swal.fire('Ops! Something wrong', 'Please, review your dates', 'error')
+            return;
+        }
+        if ( fromValue.title.length === 0 ) return;
     }
 
     return (
@@ -61,7 +95,9 @@ export const CalendarModal = () => {
             
             <h1> Nuevo evento </h1>
             <hr />
-            <form className="container">
+            <form className="container"
+                onSubmit={onSubmitBtn}
+            >
 
                 <div className="form-group mb-2">
                     <label>Fecha y hora inicio</label>
@@ -90,7 +126,7 @@ export const CalendarModal = () => {
                     <label>Titulo y notas</label>
                     <input 
                         type="text" 
-                        className="form-control"
+                        className={`form-control ${titleClass}`}
                         placeholder="Título del evento"
                         name="title"
                         autoComplete="off"
@@ -103,7 +139,7 @@ export const CalendarModal = () => {
                 <div className="form-group mb-2">
                     <textarea 
                         type="text" 
-                        className="form-control"
+                        className={`form-control`}
                         placeholder="Notas"
                         rows="5"
                         name="notes"
