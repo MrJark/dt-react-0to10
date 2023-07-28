@@ -7,6 +7,7 @@ import { CalendarBoxEvent, CalendarModal, Navbar } from '../components';
 
 import { getChangeIcons, localizer } from '../../helpers';
 import { useState } from 'react';
+import { useUiStore } from '../../hooks';
 
 
 const events = [{
@@ -21,6 +22,8 @@ const events = [{
 }]
 
 export const CalendarPage = () => {
+
+    const { openDateModal } = useUiStore(); // solo se necesita la import de este open
 
     const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week')
 
@@ -39,7 +42,8 @@ export const CalendarPage = () => {
     };
 
     const onDobleClick = ( event ) => {
-        
+        // console.log('doble');
+        openDateModal();
     }
     const onOneClick = ( event ) => {
         

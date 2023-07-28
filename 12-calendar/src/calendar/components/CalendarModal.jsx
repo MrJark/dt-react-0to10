@@ -11,6 +11,7 @@ import DatePicker from 'react-datepicker';
 
 
 import 'react-datepicker/dist/react-datepicker.css';
+import { useUiStore } from '../../hooks';
 
 
 
@@ -29,7 +30,9 @@ Modal.setAppElement('#root');
 
 export const CalendarModal = () => {
 
-    const [isOpenModal, setIsOpenModal] = useState(true);
+    const {isDateModalOpen, closeDateModal} = useUiStore();
+    // const [isOpenModal, setIsOpenModal] = useState(true);// esto lo puedes eliminar porque el hook useUiStore hace dicha función
+    
     const [formSubmitted, setFormSubmitted] = useState(false);
 
     const [fromValue, setFromValue] = useState({
@@ -65,8 +68,9 @@ export const CalendarModal = () => {
 
     const onCloseModal = ( ) => {
         // console.log('close');
-        setIsOpenModal( false );
-        setFormSubmitted(true)
+        // setIsOpenModal( false ); // no valen por el hook useUiStore
+        // setFormSubmitted(true)
+        closeDateModal();
     }
 
     const onSubmitBtn = (e) => {
@@ -85,7 +89,7 @@ export const CalendarModal = () => {
 
     return (
         <Modal
-            isOpen= {isOpenModal}
+            isOpen= {isDateModalOpen}
             onRequestClose={onCloseModal}
             style={customStyles}
             className="modal"

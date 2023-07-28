@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 
 export const uiSlice = createSlice({
-   name: 'ui',
+   name: 'ui', // este nombre es el que se le da para cuando hagas el useSelector para el store y cogerlo 
    initialState: {
        isDateModalOpen: false
     },
