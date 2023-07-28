@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { addHours, differenceInSeconds } from 'date-fns';
 
 import Swal from 'sweetalert2';
@@ -11,7 +11,7 @@ import DatePicker from 'react-datepicker';
 
 
 import 'react-datepicker/dist/react-datepicker.css';
-import { useUiStore } from '../../hooks';
+import { useCalendarStore, useUiStore } from '../../hooks';
 
 
 
@@ -34,6 +34,7 @@ export const CalendarModal = () => {
     // const [isOpenModal, setIsOpenModal] = useState(true);// esto lo puedes eliminar porque el hook useUiStore hace dicha función
     
     const [formSubmitted, setFormSubmitted] = useState(false);
+    const { activeEvent } = useCalendarStore();
 
     const [fromValue, setFromValue] = useState({
         title: '',
@@ -50,7 +51,15 @@ export const CalendarModal = () => {
             ? 'is-valid'
             : 'is-invalid'
 
-    }, [fromValue.title, formSubmitted] )
+    }, [fromValue.title, formSubmitted] );
+
+    useEffect(() => {
+        if( activeEvent !== null ) {
+            setFromValue({...activeEvent});
+        }
+
+    }, [activeEvent])
+    
 
     const onInputChange = ( { target } ) => { // se hace para poder cambiar los valores del form
         setFromValue( {

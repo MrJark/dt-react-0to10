@@ -7,25 +7,28 @@ import { CalendarBoxEvent, CalendarModal, Navbar } from '../components';
 
 import { getChangeIcons, localizer } from '../../helpers';
 import { useState } from 'react';
-import { useUiStore } from '../../hooks';
+import { useCalendarStore, useUiStore } from '../../hooks';
 
-
-const events = [{
-    title: 'Cris Birthday',
-    notes: 'Congratulate',
-    start: new Date(),
-    end: addHours( new Date(), 2), // esto es coger la fecha ( actual) y sumarle dos horas
-    user: {
-        _id: '123',
-        name: 'Chema'
-    }
-}]
+// se han ido al calendarSlice
+// const events = [{ 
+//     title: 'Cris Birthday',
+//     notes: 'Congratulate',
+//     start: new Date(),
+//     end: addHours( new Date(), 2), // esto es coger la fecha ( actual) y sumarle dos horas
+//     user: {
+//         _id: '123',
+//         name: 'Chema'
+//     }
+// }];
 
 export const CalendarPage = () => {
 
     const { openDateModal } = useUiStore(); // solo se necesita la import de este open
+    const { events, setActiveEvent } = useCalendarStore();
+    
 
-    const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week')
+    const [ lastView, setLastView ] = useState(localStorage.getItem('lastView') || 'week')
+
 
     const eventStyleGetter = ( event, start, end, isSelected ) => {
         // console.log({event, start, end, isSelected});
@@ -46,7 +49,7 @@ export const CalendarPage = () => {
         openDateModal();
     }
     const onOneClick = ( event ) => {
-        
+        setActiveEvent( event )
     }
     const onViewChange = ( event ) => {
         // para almacenar en el LocalStorage la última vista del usuario y necesitas el useState y el defaultView del Calendar
