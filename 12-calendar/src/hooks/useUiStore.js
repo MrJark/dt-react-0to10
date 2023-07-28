@@ -1,4 +1,4 @@
-// custom hook para el uso del store
+// custom hook para el uso del store y con esto te evitas tener que estar siempre con el useSelector y useDispatch 
 import { useDispatch, useSelector } from 'react-redux';
 import { onCloseDateModal, onOpneDateModal } from '../store/ui';
 
