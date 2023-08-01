@@ -1,7 +1,7 @@
 // hook para tener centralizado todos los movimientos/ eventos que se hagan en el calendario
 
 import { useDispatch, useSelector } from "react-redux"
-import { onAddNewEvent, onSetActiveEvent, onUpdateEvent } from "../store/calendar";
+import { onAddNewEvent, onDeleteEvent, onSetActiveEvent, onUpdateEvent } from "../store/calendar";
 
 
 
@@ -27,13 +27,20 @@ export const useCalendarStore = () => {
         }
     }
 
+    const startDeletingEvent = () => {
+        // aquí se llama al backend para 
+        dispatch( onDeleteEvent( ) );
+    }
+
     return {
         //* Properties
         events,
         activeEvent,
+        hasEventSelected: !!activeEvent, // sto es para saber si tenemos una  nota activa o no para mandarlo al btn del delete y que solo aparezca de forma condicional. si el activeEvent es null da false pero si no es null, da true
 
         //* Methods
         setActiveEvent,
         startSavingEvent,
+        startDeletingEvent,
     }
 }

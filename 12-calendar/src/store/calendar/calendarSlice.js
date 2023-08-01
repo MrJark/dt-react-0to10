@@ -40,8 +40,14 @@ export const calendarSlice = createSlice({
                 return event;
             });
         },
+        onDeleteEvent: ( state ) => { // no hace un payload
+            if (state.activeEvent) { // solo lo hará cuando exista una nota activa
+                state.events = state.events.filter( event => event._id !== state.activeEvent._id ); // filtra todas las notas y trae aquellas que no sean iguales al id que no queires, por tanto, en se elimina del state
+                state.activeEvent = null;
+            }
+        },
     }
 });
 
 // Action creators are generated for each case reducer function
-export const { onSetActiveEvent, onAddNewEvent, onUpdateEvent } = calendarSlice.actions;
+export const { onSetActiveEvent, onAddNewEvent, onUpdateEvent, onDeleteEvent } = calendarSlice.actions;

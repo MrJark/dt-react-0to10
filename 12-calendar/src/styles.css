@@ -9,7 +9,8 @@
     --background-dark-light: #404141;
     --background-light: #f9ffff;
     --background-light-dark: #A6ADAD;
-    --erros: #D34F4F;
+    --errors: #D34F4F;
+    --errors-dark: #d02424;
 
   
 }
@@ -23,11 +24,11 @@ body {
     background-color: var(--background-light);
 }
 .btn-color-sign-out {
-    color: var(--erros);
-    border: solid 1px var(--erros);
+    color: var(--errors);
+    border: solid 1px var(--errors);
 }
 .btn-color-sign-out:hover {
-    background-color: var(--erros);
+    background-color: var(--errors);
     color: var(--letter-white);
 }
 
@@ -82,6 +83,7 @@ body {
     font-size: medium;
 }
 
+/* FAB btns */
 .fab {
     border-radius: 100%;
     padding: 18px;
@@ -94,8 +96,28 @@ body {
 .fab:hover {
     padding: 20px;
     background-color: var(--socondary-dark);
-    cursor: pointer;
     position: fixed;
     right: 22px;
     bottom: 22px;
+}
+
+.fab-danger {
+    border-radius: 100%;
+    width: auto;
+    /* padding: 18px; */
+    position: fixed;
+    right: 32px;
+    bottom: 90px;
+    background-color: var(--errors);
+    border: none;
+}
+.fab-danger:hover {
+    /* font-size: 20px; */
+    background-color: var(--errors-dark);
+    position: fixed;
+    width: 45px;
+    height: 45px;
+    position: fixed;
+    right: 28px;
+    bottom: 87px;
 }
