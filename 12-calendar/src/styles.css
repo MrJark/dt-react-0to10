@@ -95,4 +95,7 @@ body {
     padding: 20px;
     background-color: var(--socondary-dark);
     cursor: pointer;
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
 }

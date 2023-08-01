@@ -34,7 +34,7 @@ export const CalendarModal = () => {
     // const [isOpenModal, setIsOpenModal] = useState(true);// esto lo puedes eliminar porque el hook useUiStore hace dicha función
     
     const [formSubmitted, setFormSubmitted] = useState(false);
-    const { activeEvent } = useCalendarStore();
+    const { activeEvent, startSavingEvent } = useCalendarStore();
 
     const [fromValue, setFromValue] = useState({
         title: '',
@@ -82,7 +82,7 @@ export const CalendarModal = () => {
         closeDateModal();
     }
 
-    const onSubmitBtn = (e) => {
+    const onSubmitBtn = async (e) => {
         e.preventDefault();
         setFormSubmitted(true);
         
@@ -94,6 +94,11 @@ export const CalendarModal = () => {
             return;
         }
         if ( fromValue.title.length === 0 ) return;
+
+        await startSavingEvent( fromValue ); // empieza el startsaving pero con el fromvalue
+
+        closeDateModal(); // cieras el modal cunado ha acabado todo
+        setFormSubmitted(false);
     }
 
     return (
