@@ -8,5 +8,8 @@ export const store = configureStore({
     reducer: {
         ui: uiSlice.reducer,
         calendar: calendarSlice.reducer,
-    }
+    },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({ // para evitar errores en la consola de la Date
+        serializableCheck: false,
+    })
 })
