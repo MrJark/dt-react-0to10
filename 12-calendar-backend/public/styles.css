@@ -1,0 +1,21 @@
+:root {
+    --letter-black: #020D0D;
+    --letter-white: #f9f9f9;
+    --primary: #0C9A9D;
+    --primary-100: #96DEDF;
+    --socondary: #ab79dd;
+    --socondary-dark: #8938d9;
+    --background-dark: #222222;
+    --background-dark-light: #404141;
+    --background-light: #f9ffff;
+    --background-light-dark: #A6ADAD;
+    --errors: #D34F4F;
+    --errors-dark: #d02424; 
+}
+
+body,
+html {
+    background-color: var(--background-dark);
+    color: var(--letter-white);
+    font-family: "Ubuntu", Verdana, Geneva, Tahoma, sans-serif;
+}
