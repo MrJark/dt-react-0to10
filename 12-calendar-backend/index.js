@@ -10,6 +10,9 @@ const app = express();
 // el .use es solo una función que se ejecuta siempre cada vez que se pasa por una ruta ( es un middelware )
 app.use(express.static('public')); // este es la forma de decirle que habrá la carpeta public cunado quieras ver algo
 
+// Lectura y parseo del body
+app.use( express.json( ));
+
 // Rutas
 // ruta de auth: crear, login, renew
 app.use('/api/auth', require('./routes/auth')); // esto dice: los archivos que vengan del require, van a ser mandado o habilitar al '/api/auth

@@ -9,3 +9,12 @@ Esta es la parte del calendar donde tendré y haré el backend desde cero
   Para que sea más sencillo el acceder a la funcionalidad del nodemon, en el package.js, en la parte del script he puesto varios comando de npm para  acceder a estás funionalidades más rápido: **"dev": "nodemon index.js",** y **"start": "node index.js"**
 3. Instalación de express -> **npm i express**
 4. Intalación del .env -> **npm i dotenv**
+5. Para validar condiciones en express -> **npm i express-validator**
+
+## Lecturas
+
+- [Status Codes](https://www.restapitutorial.com/httpstatuscodes.html)
+
+## Notas / Explicaciones 
+
+- **Middleware**: es una función que se ejecuta antes de que nada más suceda
