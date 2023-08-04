@@ -1,6 +1,6 @@
 # Backend Configurations
 
-Esta es la parte del calendar donde tendré y haré el backend desde cero
+Esta es la parte del calendar donde tendré y haré el backend desde cero. La aplicación tendrá como base de datos y backend **[MongoDB Atlas](https://www.mongodb.com/cloud/atlas/efficiency?utm_source=google&utm_campaign=gs_americas_canada_search_brand_atlas_desktop&utm_term=mongo%20atlas&utm_medium=cpc_paid_search&utm_ad=e&gclid=Cj0KCQjwiYL3BRDVARIsAF9E4GfQWQYG_pbTlJA5eixJKM75IaFYqk4nUBlKe0iXkKn4kXc1HZmKSikaAtKzEALw_wcB)** y me apoyaré de **[mongoose](https://mongoosejs.com)**
 
 ## Instalaciones
 
@@ -10,6 +10,7 @@ Esta es la parte del calendar donde tendré y haré el backend desde cero
 3. Instalación de express -> **npm i express**
 4. Intalación del .env -> **npm i dotenv**
 5. Para validar condiciones en express -> **npm i express-validator**
+6. Instalación de mongoose -> **npm i mongoose**
 
 ## Lecturas
 
@@ -18,3 +19,4 @@ Esta es la parte del calendar donde tendré y haré el backend desde cero
 ## Notas / Explicaciones 
 
 - **Middleware**: es una función que se ejecuta antes de que nada más suceda
+- 
