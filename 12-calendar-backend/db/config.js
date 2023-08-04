@@ -8,11 +8,11 @@ const dbConnection = async() => {
     try {
         
         await mongoose.connect( process.env.DB_CNN );
+        console.log('DB Online');
 
-        console.log('DB Onbline');
     } catch (error) {
         console.log(error);
-        // throw new Error('Initialization Error')
+        throw new Error('Initialization Error')
     }
 };
 

@@ -24,7 +24,7 @@ router.post(
     ],
     createUser );
 
-router.get(
+router.post(
     '/', 
     [
         check('email',' The email is required').isEmail(), 
@@ -33,7 +33,7 @@ router.get(
     ],
     loginUser);
 
-router.post('/renew', revalidateToken);
+router.get('/renew', revalidateToken);
 
 
 module.exports = router;
