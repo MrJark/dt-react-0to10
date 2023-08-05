@@ -6,7 +6,7 @@ const User = require('../models/User');
 const createUser = async(req, res = express.response ) => {
     // console.log('se requiere el /');
 
-    // const { name, email, psassword } = req.body;
+    const { email, psassword } = req.body;
 
     // gracias a express-validator puedo quitar esto
     // if ( name.length < 3 ) {
@@ -27,12 +27,24 @@ const createUser = async(req, res = express.response ) => {
 
     // cuando se trabaja en bd, es bueno usar los trycatch por so surgen errores que no se quede pillado
     try {
-        const user = new User( req.body );
+
+        // let user = User.findOne({email: email})// por el ES6 es lo mismo esto que lo de abajo
+        let user = await User.findOne({email}) // lo que haces con esto es tener una forma de validar si el user existe
+        // console.log(user);
+        if( user ){
+            return res.status(400).json({
+                ok: false,
+                msg: 'A user with this email already exist'
+            })
+        };
+        user = new User( req.body );
         await user.save();// esto es para grabarlo en la db
-    
+
         res.status(201).json({
             ok: true,
-            msg: 'login',
+            uid: user.id,
+            name: user.name,
+            msg: 'new',
             // name, // esto ya no es necesario porque se lo has especificado en el User
             // email,
             // psassword,
