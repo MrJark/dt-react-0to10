@@ -3,7 +3,7 @@ const { validationResult } = require('express-validator');
 
 
 // este middleware su función es frenar la lectura de los middlewares de los auth si hay un error y mostrarlo
-const fieldValidation = ( req, res = response, next ) => {
+const fieldValidator = ( req, res = response, next ) => {
 
     // manejo de errores
     const errors = validationResult( req );
@@ -19,5 +19,5 @@ const fieldValidation = ( req, res = response, next ) => {
 };
 
 module.exports = {
-    fieldValidation,
+    fieldValidator,
 }

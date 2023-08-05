@@ -1,12 +1,12 @@
 const express = require('express')
 const { validationResult } = require('express-validator');
-
+const User = require('../models/User');
 
 // se trae otra vez express y se le da el valo a la res de espress.response para que aparezca los autocompletados
-const createUser = (req, res = express.response ) => {
+const createUser = async(req, res = express.response ) => {
     // console.log('se requiere el /');
 
-    const { name, email, psassword } = req.body;
+    // const { name, email, psassword } = req.body;
 
     // gracias a express-validator puedo quitar esto
     // if ( name.length < 3 ) {
@@ -25,13 +25,25 @@ const createUser = (req, res = express.response ) => {
     //     })
     // }
 
-    res.status(201).json({
-        ok: true,
-        msg: 'login',
-        name,
-        email,
-        psassword,
-    })
+    // cuando se trabaja en bd, es bueno usar los trycatch por so surgen errores que no se quede pillado
+    try {
+        const user = new User( req.body );
+        await user.save();// esto es para grabarlo en la db
+    
+        res.status(201).json({
+            ok: true,
+            msg: 'login',
+            // name, // esto ya no es necesario porque se lo has especificado en el User
+            // email,
+            // psassword,
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Please, talk with Admin',
+        })
+    }
 };
 
 const loginUser =  (req,  res = express.response ) => {
