@@ -1,22 +1,20 @@
-const express = require('express')
-const { validationResult } = require('express-validator');
-const User = require('../models/User');
+const {response} = require('express'); // para cargar el y tenerlo de forma que salga el autocompletado andemás tb tienes que ponerlo en la const en la parte del res com  express.response
+const { validationResult } = require('express-validator')
 
-// se trae otra vez express y se le da el valo a la res de espress.response para que aparezca los autocompletados
-const createUser = async(req, res = express.response ) => {
-    // console.log('se requiere el /');
 
-    const { email, psassword } = req.body;
+const createUser = (req, res = response ) => {
 
-    // gracias a express-validator puedo quitar esto
-    // if ( name.length < 3 ) {
-    //     return res.status(400).json({
+    const { name, email, password } = req.body;
+
+    // gracias al express-validator puedes quitar esta validación
+    // if ( name.length < 3 ){
+    //     return res.status(400).json( {
     //         ok: false,
-    //         msg: 'Your name need 3 letters'
+    //         mgs: 'Your user name require at least 3 words'
     //     })
     // }
 
-    // manejo de errore. Lo haces como un custom middleware
+    // manejo de errores pero lo haces desde el middleware
     // const errors = validationResult( req );
     // if ( !errors.isEmpty() ) {
     //     return res.status(400).json({
@@ -25,70 +23,34 @@ const createUser = async(req, res = express.response ) => {
     //     })
     // }
 
-    // cuando se trabaja en bd, es bueno usar los trycatch por so surgen errores que no se quede pillado
-    try {
-
-        // let user = User.findOne({email: email})// por el ES6 es lo mismo esto que lo de abajo
-        let user = await User.findOne({email}) // lo que haces con esto es tener una forma de validar si el user existe
-        // console.log(user);
-        if( user ){
-            return res.status(400).json({
-                ok: false,
-                msg: 'A user with this email already exist'
-            })
-        };
-        user = new User( req.body );
-        await user.save();// esto es para grabarlo en la db
-
-        res.status(201).json({
-            ok: true,
-            uid: user.id,
-            name: user.name,
-            msg: 'new',
-            // name, // esto ya no es necesario porque se lo has especificado en el User
-            // email,
-            // psassword,
-        })
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({
-            ok: false,
-            msg: 'Please, talk with Admin',
-        })
-    }
-};
-
-const loginUser =  (req,  res = express.response ) => {
-    // console.log('se requiere el /');
-
-    const { email, psassword } = req.body;
-
-    const errors = validationResult( req );
-    if ( !errors.isEmpty() ) {
-        return res.status(400).json({
-            ok: false,
-            errors: errors.mapped(),
-        })
-    }
-
-    res.status(200).json({
-        ok: true,
-        msg: 'login',
+    res.json({
+        ok:  true,
+        msg: 'register',
+        name,
         email,
-        psassword,
+        password
     })
 };
 
-const revalidateToken = (req, res = express.response ) => {
-    // console.log('se requiere el /');
+const loginUser = (req, res = response ) => {
+
+    const { email, password } = req.body;
+
     res.json({
-        ok: true,
+        ok:  true,
+        msg: 'login',
+        email,
+        password
+    })
+};
+
+const revalidateToken =  (req, res = response ) => {
+    res.json({
+        ok:  true,
         msg: 'renew'
     })
 };
 
-
-// en node, no funciona el export const... sino 👇🏼
 module.exports = {
     createUser,
     loginUser,
