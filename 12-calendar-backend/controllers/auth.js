@@ -1,35 +1,62 @@
 const {response} = require('express'); // para cargar el y tenerlo de forma que salga el autocompletado andemás tb tienes que ponerlo en la const en la parte del res com  express.response
-const { validationResult } = require('express-validator')
+const { validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
+const User = require ('../models/User');
 
 
-const createUser = (req, res = response ) => {
+// cuando se trabajes en basaes de datos, es bueno que lo hagas con trycatch ya que pueden surgir errores
+const createUser = async (req, res = response ) => {
 
-    const { name, email, password } = req.body;
+    const { email, password } = req.body;
+    try {
+        
+        let user = await User.findOne( { email: email } ); // es una validación para saber si el email existe
+        // console.log(user);
+        if( user ) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'This email already exist'
+            })
+        }
 
-    // gracias al express-validator puedes quitar esta validación
-    // if ( name.length < 3 ){
-    //     return res.status(400).json( {
-    //         ok: false,
-    //         mgs: 'Your user name require at least 3 words'
-    //     })
-    // }
+        user = new User( req.body );
+        
+        // Antes de guardar el user, necesitas encriptar la contraseña
+        const salt = bcrypt.genSaltSync(); // a mas vueltas, más complicada es la encriptación y más segura pero requiere de mayor almacenamiento. Por default son 10
+        user.password = bcrypt.hashSync(password, salt); // forma de encriptar la constraseña con bcrypt
 
-    // manejo de errores pero lo haces desde el middleware
-    // const errors = validationResult( req );
-    // if ( !errors.isEmpty() ) {
-    //     return res.status(400).json({
-    //         ok: false,
-    //         errors: errors.mapped(),
-    //     })
-    // }
+        await user.save(); // para guardar el user en la bd
 
-    res.json({
-        ok:  true,
-        msg: 'register',
-        name,
-        email,
-        password
-    })
+        // gracias al express-validator puedes quitar esta validación
+        // if ( name.length < 3 ){
+        //     return res.status(400).json( {
+        //         ok: false,
+        //         mgs: 'Your user name require at least 3 words'
+        //     })
+        // }
+        // manejo de errores pero lo haces desde el middleware
+        // const errors = validationResult( req );
+        // if ( !errors.isEmpty() ) {
+        //     return res.status(400).json({
+        //         ok: false,
+        //         errors: errors.mapped(),
+        //     })
+        // }
+
+
+        res.status(201).json({
+            ok:  true,
+            uid: user.id,
+            name: user.name
+        })
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            ok: false,
+            mag: 'Please, talk with admin'
+        })
+    }
 };
 
 const loginUser = (req, res = response ) => {
