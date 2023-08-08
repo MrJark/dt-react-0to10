@@ -59,16 +59,43 @@ const createUser = async (req, res = response ) => {
     }
 };
 
-const loginUser = (req, res = response ) => {
+const loginUser = async (req, res = response ) => {
 
     const { email, password } = req.body;
 
-    res.json({
-        ok:  true,
-        msg: 'login',
-        email,
-        password
-    })
+    try {
+        
+        const user = await User.findOne( { email: email } ); // es una validación para saber si el email existe
+        // console.log(user);
+        if( !user ) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'The user with this email do not exist'
+            });
+        };
+        // confirmar los password
+        const validPass = bcrypt.compareSync( password, user.password); // regresa un true si son iguales o false si no lo son
+        if (!validPass ) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'The password is wrog!'
+            });
+        };
+        // Generar el json web token
+        res.json({
+            ok:  true,
+            uid: user.id,
+            name: user.name,
+        })
+
+
+    } catch (error) {
+        console.log(err);
+        res.status(500).json({
+            ok: false,
+            mag: 'Please, talk with admin'
+        })
+    }
 };
 
 const revalidateToken =  (req, res = response ) => {
