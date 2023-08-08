@@ -2,6 +2,7 @@ const {response} = require('express'); // para cargar el y tenerlo de forma que 
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const User = require ('../models/User');
+const { generatorJWT } = require('../helpers/jwt')
 
 
 // cuando se trabajes en basaes de datos, es bueno que lo hagas con trycatch ya que pueden surgir errores
@@ -27,6 +28,9 @@ const createUser = async (req, res = response ) => {
 
         await user.save(); // para guardar el user en la bd
 
+        // Generas el token al crear el usuario 
+        const token = await generatorJWT(user.id, user.name )
+
         // gracias al express-validator puedes quitar esta validación
         // if ( name.length < 3 ){
         //     return res.status(400).json( {
@@ -47,7 +51,8 @@ const createUser = async (req, res = response ) => {
         res.status(201).json({
             ok:  true,
             uid: user.id,
-            name: user.name
+            name: user.name,
+            token,
         })
 
     } catch (err) {
@@ -81,11 +86,14 @@ const loginUser = async (req, res = response ) => {
                 msg: 'The password is wrog!'
             });
         };
-        // Generar el json web token
+        // Generar el json web token cuando se hace el login
+        const token = await generatorJWT(user.id, user.name )
+
         res.json({
             ok:  true,
             uid: user.id,
             name: user.name,
+            token,
         })
 
 

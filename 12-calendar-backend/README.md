@@ -12,6 +12,7 @@ Esta es la parte del calendar donde tendré y haré el backend desde cero. La ap
 5. Para validar condiciones en express -> **npm i express-validator**
 6. Instalación de mongoose -> **npm i mongoose**
 7. Para la encriptación  de las constraseñas voy a usar bcryptjs -> **npm i bcryptjs**
+8. Para la creación de los tokens voy a usar el JsonWebToken (JWT) -> [JWT Link](https://jwt.io) y lo instalo como **npm i jsonwebtoken**
 
 ## Lecturas
 
