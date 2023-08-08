@@ -12,6 +12,7 @@ const router = Router();
 const { check } = require('express-validator'); // el check es el encargado de validar un campo en concreto
 const { fieldValidator } = require('../middlewares/fieldValidator');
 const { createUser, loginUser, revalidateToken } = require ('../controllers/auth');
+const { jwtValidator } = require('../middlewares/jwtValidator')
 
 
 // router.post(
@@ -47,7 +48,7 @@ router.post(
     loginUser
 );
 
-router.get('/renew', revalidateToken);
+router.get('/renew', jwtValidator, revalidateToken);
 
 
 module.exports = router;

@@ -106,10 +106,19 @@ const loginUser = async (req, res = response ) => {
     }
 };
 
-const revalidateToken =  (req, res = response ) => {
+const revalidateToken =  async(req, res = response ) => {
+
+    // const uid = req.uid;
+    // const name = req.name;
+    // las dos lineas de arriba se simplifican de la siguiente manera
+    const { uid, name } = req;
+
+    //* Tarea: generar un nuevo token ❌ tenía la linea de abajo pero al haber comentado el uid y el name, no sabía como traerlo :'(
+    const token = await generatorJWT(uid, name )
+
     res.json({
         ok:  true,
-        msg: 'renew'
+        token,
     })
 };
 
