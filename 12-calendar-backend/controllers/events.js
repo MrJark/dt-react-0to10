@@ -3,15 +3,14 @@
         - Crear las rutas get, post, put y delete
         - Crear las funciones getEvents, createEvent, updateEvent, deleteEvent
         - Que se muestres en ellas los mensajes de opk: true cuando esté bien y el ok: false cuando no se de bien con sus respectivos msg
+        ----
+        Todo bien salvo el validar token que no lo he añadido, se me ha olvidado
 */ 
 
 const { response } = require('express');
 
 const getEvents = async ( req, res = response ) => {
-    // {
-    //     ok: true,
-    //     msg:'getEvents'
-    // }
+
     try {
 
         res.json({

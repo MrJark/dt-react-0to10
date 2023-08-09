@@ -22,4 +22,4 @@ Esta es la parte del calendar donde tendré y haré el backend desde cero. La ap
 ## Notas / Explicaciones 
 
 - **Middleware**: es una función que se ejecuta antes de que nada más suceda
-- 
+- Al hacer la parte de los eventos, hace falta el **x-token** y para ello tienes que llamar al loginUser para que te de el token el cual poner como valor, sino te pedirá uno
