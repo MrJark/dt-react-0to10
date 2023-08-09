@@ -25,6 +25,8 @@ app.use( express.json());
 // Rutas
 // ruta de auth: crear, login, renew
 app.use('/api/auth', require('./routes/auth')); // esto dice: los archivos que vengan del require, van a ser mandado o habilitar al '/api/auth
+app.use('/api/events', require('./routes/events')); 
+
 // ruta crud: Eventos
 
 
