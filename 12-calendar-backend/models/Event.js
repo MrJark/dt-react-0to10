@@ -7,25 +7,31 @@ const EventSchema = Schema({
 
     title: {
         type: String,
-        require: true,
+        required: true,
     },
     notes: {
         type: String,
-        require: true,
+        required: false,
     },
     start: {
         type: Date,
-        require: true,
+        required: true,
     },
     end: {
         type: Date,
-        require: true
+        required: true
     },
     user: { // para hacer la referencia al user
-        trype: Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
+        required: true,
     },
 });
 
+EventSchema.method('toJSON', function() { // esto es solo para cambiar el _id por id
+    const { __v, _id, ...object } = this.toObject();
+    object.id = _id;
+    return object;
+})
 
 module.exports = model('Event', EventSchema)
