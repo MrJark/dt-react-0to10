@@ -2,6 +2,10 @@
 
 Esta es la parte del calendar donde tendré y haré el backend desde cero. La aplicación tendrá como base de datos y backend **[MongoDB Atlas](https://www.mongodb.com/cloud/atlas/efficiency?utm_source=google&utm_campaign=gs_americas_canada_search_brand_atlas_desktop&utm_term=mongo%20atlas&utm_medium=cpc_paid_search&utm_ad=e&gclid=Cj0KCQjwiYL3BRDVARIsAF9E4GfQWQYG_pbTlJA5eixJKM75IaFYqk4nUBlKe0iXkKn4kXc1HZmKSikaAtKzEALw_wcB)** y me apoyaré de **[mongoose](https://mongoosejs.com)**
 
+## Despliegue
+
+El despliegue del backend será a través de [heroku](https://www.heroku.com)
+
 ## Instalaciones
 
 1. Paquete base para un package.json -> **npm init -y**
