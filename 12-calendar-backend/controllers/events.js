@@ -59,11 +59,42 @@ const createEvent = async ( req, res = response ) => {
 };
 const updateEvent = async ( req, res = response ) => {
 
+    const eventId = req.params.id; // para obtener el id del propio evento
+    const uid = req.uid; // para extraer el uid del usuario. Solo puede haber un uid por user pero pueden haber muchos eventId
+    console.log(`Id del evento ${eventId}`);
+    console.log(`Id del user ${uid}`);
+
     try {
+
+        const event = await Event.findById( eventId ); // para encontrar el event
+        console.log(event);
+
+        if ( !event ) { // si el evento no existe
+            return res.status(404).json({
+                ok: false,
+                msg: 'This event id dont exist',
+            })
+        }
+
+        if ( event.user.toString() !== uid ) { // si el user no es el indicado para modificar el evento
+            return res.status(401).json({
+                ok: false,
+                msg: 'Your id does not allow you to modify this event',
+            })
+        };
+
+        const newUpdateEvent = {
+            ...req.body,
+            user: uid,
+        };
+
+        const updatedEvent = await Event.findByIdAndUpdate( eventId, newUpdateEvent, {new: true} );
 
         res.json({
             ok: true,
             msg: 'All Rigth in updateEvent',
+            eventId,
+            event: updatedEvent,
         });
 
     } catch (err) {
@@ -71,18 +102,49 @@ const updateEvent = async ( req, res = response ) => {
 
         res.status(500).json({
             ok: false,
-            msg: 'All Wrog in updateEvent',
-        })
+            msg: 'All Wrog in updateEvent. Talk with Admin',
+        });
     }
 
 };
 const deleteEvent = async ( req, res = response ) => {
+    //* Tarea: hacer el deleteEvent ✅ solo era cambiar el findByIdAndUpdate por el findByIdAndDelete
+
+    const eventId = req.params.id; 
+    const uid = req.uid; 
+    console.log(`Id del evento: ${eventId}`);
+    console.log(`Id del user: ${uid}`);
 
     try {
+        const event = await Event.findById( eventId );
+        console.log(event);
+
+        if ( !event ) {
+            return res.status(404).json({
+                ok: false,
+                msg: 'This event id dont exist',
+            })
+        }
+
+        if ( event.user.toString() !== uid ) {
+            return res.status(401).json({
+                ok: false,
+                msg: 'Your id does not allow you to modify this event',
+            })
+        };
+
+        const newDeleteEvent = {
+            ...req.body,
+            user: uid,
+        };
+
+        const deletedEvent = await Event.findByIdAndDelete( eventId ); 
+
 
         res.json({
             ok: true,
             msg: 'All Rigth in deleteEvent',
+            deletedEvent,
         });
 
     } catch (err) {
