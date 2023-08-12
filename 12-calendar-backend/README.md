@@ -19,6 +19,7 @@ El despliegue del backend será a través de [heroku](https://www.heroku.com)
 8. Para la creación de los tokens voy a usar el JsonWebToken (JWT) -> [JWT Link](https://jwt.io) y lo instalo como **npm i jsonwebtoken**
 9. Instalación y configuaraciópn de los cors [Link](https://www.npmjs.com/package/cors) y lo instalas con **npm install cors**
 10. Para validar fechas, uso moment -> **npm i moment**
+11. Instalación de [Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up) en el global **brew tap heroku/brew && brew install heroku**
 
 ## Lecturas
 
